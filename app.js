@@ -1,61 +1,97 @@
+const databaseApi = 'https://ibn-samy-short-links.firebaseio.com/links.json';
+
 const postData = async (url = '', data = {}) => {
+  const request = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json' },
+    mode: 'cors',
+    credentials: 'same-origin',
+  });
 
-const request = await fetch(url,{
-method:'POST',
-body:JSON.stringify(data),
-headers:{'Content-Type':'application/json'},
-mode: 'cors',
- credentials: 'same-origin',
-
-}) 
-
-return request.json()
-
-}
-
-// مينفعش أعتمد على الكود بتاع فايربيز عشان مينفعش الدومين يبقى فيه أندرسكور
-
-postData('https://ibn-samy-short-links.firebaseio.com/links.json',{'ffe':{domain:'ibnsant.com'}}).then((res)=>{console.log(res)}).catch(err=>console.log(err))
+  return request.json();
+};
 
 
 const getData = async (url = '') => {
-
-    const request = await fetch(url,{mode:'cors',method:'GET'})
-
-    return request.json()
-
-}
+    const request = await fetch(url, { mode: 'cors', method: 'GET' });
+  
+    return request.json();
+  };
 
 
-getData('https://ibn-samy-short-links.firebaseio.com/links.json?orderBy="$key"&equalTo="-ML5zs-NNARGHnLRbzne"&print=pretty')
-.then((data)=>{
-    console.log(data['-ML5zs-NNARGHnLRbzne'].domain)
-return(data['-ML5zs-NNARGHnLRbzne'].domain)
-})
-.then(data=>{
-    window.open(data, '_blank');
-})
-.catch(data=>console.log(data));
+  
+// TODO generate codes as Firebase codes has '-' and domains mustn't have one
 
 
 
 const link = document.querySelector('#link');
-const result = document.querySelector('#result'); 
+const result = document.querySelector('#result');
 
-function generateShortLink () {
 
-    const domain = link.value;
-    console.log(domain);
-    postData('https://ibn-samy-short-links.firebaseio.com/links.json',{domain:domain})
-    .then((res)=>{
-        console.log(res)
-    return(res.name)
+// eslint-disable-next-line no-unused-vars
+function createNewShortLink() {
+
+  const domain = link.value;
+  console.log(domain);
+
+  postData(databaseApi, { domain })
+    .then((res) => {
+      console.log(res);
+      return res.name;
     })
-    .then(
-(slug)=>
-        {
-            result.innerText=slug;
+    .then((slug) => {
+      result.innerText = `aqsar.xyz/${slug}`;
+    })
+    .catch((err) => console.log(err));
+}
+
+function specifyURLSlug() {
+    const slug = window.location.pathname.split('/')[1];
+    if (slug !== '' && slug !== ' ') {
+        return window.location.pathname.split('/')[1];
+    }
+    return false
+}
+
+// eslint-disable-next-line no-unused-vars
+function getShortLink(givenSlug){
+
+    const slug = specifyURLSlug() || givenSlug;
+    console.log(`${databaseApi}?orderBy="$key"&equalTo="${slug}"&print=pretty`);
+
+    getData(
+        `${databaseApi}?orderBy="$key"&equalTo="${slug}"&print=pretty`,
+      )
+        .then((data) => {
+            console.log(data);
+          console.log(data[`${slug}`].domain);
+          return data[`${slug}`].domain;
+        })
+        .then((data) => {
+        //   window.open(data, '_blank'); // open link in new tap
+        
+        // copy link to clipboard
+        const temporaryInput = document.createElement('input');
+        temporaryInput.setAttribute('value', data);
+        document.body.appendChild(temporaryInput);
+        temporaryInput.select();
+        try {
+             document.execCommand("copy");  // Security exception may be thrown by some browsers.
         }
-    )
-    .catch(err=>console.log(err))
+        catch (error) {
+            console.warn("Copy to clipboard failed.", error);
+        }
+        document.body.removeChild(temporaryInput);
+        return result;
+        })
+        .catch((data) => console.log(data));
+      
+}
+
+
+// eslint-disable-next-line no-unused-vars
+function copyShortLink(){
+  const slug =  result.innerText.split('/')[1] ;
+  getShortLink(slug)
 }
