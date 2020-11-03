@@ -1,3 +1,11 @@
+const databaseApi = "https://ibn-samy-short-links.firebaseio.com/links";
+
+const getData = async (url = "") => {
+  const request = await fetch(url, { mode: "cors", method: "GET" });
+
+  return request.json();
+};
+
 // Components
 const HomeComponent = {
   render: () => {
@@ -10,25 +18,29 @@ const HomeComponent = {
   },
 };
 
-const Page1Component = {
-  render: () => {
-    return `
-        <section>
-          <h1>Page 1</h1>
-          <p>This is just a test</p>
-        </section>
-      `;
-  },
-};
+const ShortLinkComponent = {
+  get: (slug) => {
+    console.log(
+      `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
+    );
 
-const Page2Component = {
-  render: () => {
-    return `
-        <section>
-          <h1>Page 2</h1>
-          <p>This is just a test</p>
-        </section>
-      `;
+    return getData(
+      `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
+    )
+      .then((data) => {
+        console.log(data);
+        console.log(data[`${slug}`].domain);
+        return data[`${slug}`].domain;
+      })
+      .then((URL) => {
+        console.log(this);
+        ShortLinkComponent.open(URL);
+        // return URL;
+      })
+      .catch((data) => console.log(data));
+  },
+  open: (URL) => {
+    window.open(URL, "_self"); // open link in new tab
   },
 };
 
@@ -46,26 +58,39 @@ const ErrorComponent = {
 // Routes
 const routes = [
   { path: "/", component: HomeComponent },
-  { path: "/page1", component: Page1Component },
-  { path: "/page2", component: Page2Component },
+  { path: "/error", component: ErrorComponent },
 ];
 
 const router = () => {
   // TODO: Get the current path
-  const currentPath = window.location.pathname;
-  //   const currentPath = window.location.hash.slice(1).toLowerCase() || "/"; // way of tutorial
-  //   const slug = currentPath.split("/")[1];
+  //   const currentPath = window.location.pathname;
+  const currentPath = window.location.hash.slice(1) || "/"; // way of tutorial
+  console.log(currentPath);
 
   // TODO: Find the component based on the current path
-  const { component = ErrorComponent } =
+  const { component = ShortLinkComponent } =
     routes.find((route) => {
       return route.path === currentPath;
     }) || {};
 
   // TODO: Render the component in the "app" placeholder
-  const appDiv = document.querySelector("#app");
-  appDiv.innerHTML = component.render();
+  if (component === ShortLinkComponent) {
+    const slug = currentPath.split("/")[1];
+    console.log(slug);
+    if (slug !== "" && slug !== " ") {
+      component.get(slug);
+    }
+    // component.open("http://facebook.com");
+  } else {
+    const appDiv = document.querySelector("#app");
+    appDiv.innerHTML = component.render();
+  }
+};
+
+const test = () => {
+  console.log(window.location.hash);
+  router();
 };
 
 window.addEventListener("load", router);
-window.addEventListener("hashchange", router);
+window.addEventListener("hashchange", test);
