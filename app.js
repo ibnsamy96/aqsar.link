@@ -60,7 +60,7 @@ function getShortLink(givenSlug){
     const slug = specifyURLSlug() || givenSlug;
     console.log(`${databaseApi}?orderBy="$key"&equalTo="${slug}"&print=pretty`);
 
-    getData(
+  return  getData(
         `${databaseApi}?orderBy="$key"&equalTo="${slug}"&print=pretty`,
       )
         .then((data) => {
@@ -69,21 +69,7 @@ function getShortLink(givenSlug){
           return data[`${slug}`].domain;
         })
         .then((data) => {
-        //   window.open(data, '_blank'); // open link in new tap
-        
-        // copy link to clipboard
-        const temporaryInput = document.createElement('input');
-        temporaryInput.setAttribute('value', data);
-        document.body.appendChild(temporaryInput);
-        temporaryInput.select();
-        try {
-             document.execCommand("copy");  // Security exception may be thrown by some browsers.
-        }
-        catch (error) {
-            console.warn("Copy to clipboard failed.", error);
-        }
-        document.body.removeChild(temporaryInput);
-        return result;
+            return data;
         })
         .catch((data) => console.log(data));
       
@@ -93,5 +79,28 @@ function getShortLink(givenSlug){
 // eslint-disable-next-line no-unused-vars
 function copyShortLink(){
   const slug =  result.innerText.split('/')[1] ;
+
+  // copy link to clipboard
+  const temporaryInput = document.createElement('input');
+  temporaryInput.setAttribute('value', result.innerText);
+  document.body.appendChild(temporaryInput);
+  temporaryInput.select();
+  try {
+       document.execCommand("copy");  // Security exception may be thrown by some browsers.
+  }
+  catch (error) {
+      console.warn("Copy to clipboard failed.", error);
+  }
+  document.body.removeChild(temporaryInput);
+
   getShortLink(slug)
+}
+
+
+async function goToLink(){
+    const slug =  result.innerText.split('/')[1] ;
+
+const URL= await getShortLink(slug);
+
+window.open(URL, '_blank'); // open link in new tab
 }
