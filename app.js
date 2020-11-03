@@ -1,8 +1,10 @@
-const databaseApi = "https://ibn-samy-short-links.firebaseio.com/links.json";
+const databaseApi = "https://ibn-samy-short-links.firebaseio.com/links";
 
-const postData = async (url = "", data = {}) => {
+console.log("medo");
+
+const putData = async (url = "", data = {}) => {
   const request = await fetch(url, {
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" },
     mode: "cors",
@@ -18,17 +20,16 @@ const getData = async (url = "") => {
   return request.json();
 };
 
-// TODO generate codes as Firebase codes has '-' and domains mustn't have one
-
 function generateID(length) {
-  let result = "";
+  // TODO first char must be a letter not number
+  let id = "";
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    id += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
-  return result;
+  return id;
 }
 
 const link = document.querySelector("#link");
@@ -36,16 +37,16 @@ const result = document.querySelector("#result");
 
 // eslint-disable-next-line no-unused-vars
 function createNewShortLink() {
+  const randomID = generateID(6);
   const domain = link.value;
-  console.log(domain);
+  console.log(randomID);
 
-  postData(databaseApi, { domain })
+  putData(`${databaseApi}/${randomID}.json`, { domain })
     .then((res) => {
       console.log(res);
-      return res.name;
     })
-    .then((slug) => {
-      result.innerText = `aqsar.xyz/${slug}`;
+    .then(() => {
+      result.innerText = `aqsar.xyz/${randomID}`;
     })
     .catch((err) => console.log(err));
 }
@@ -61,9 +62,13 @@ function specifyURLSlug() {
 // eslint-disable-next-line no-unused-vars
 function getShortLink(givenSlug) {
   const slug = specifyURLSlug() || givenSlug;
-  console.log(`${databaseApi}?orderBy="$key"&equalTo="${slug}"&print=pretty`);
+  console.log(
+    `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
+  );
 
-  return getData(`${databaseApi}?orderBy="$key"&equalTo="${slug}"&print=pretty`)
+  return getData(
+    `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
+  )
     .then((data) => {
       console.log(data);
       console.log(data[`${slug}`].domain);
