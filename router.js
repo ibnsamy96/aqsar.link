@@ -36,7 +36,7 @@ const ShortLinkComponent = {
         console.log(this);
         ShortLinkComponent.open(URL);
       })
-      .catch((data) => ShortLinkComponent.open("404"));
+      .catch((data) => ShortLinkComponent.open("#/404"));
   },
   open: (URL) => {
     window.open(URL, "_self"); // open link in new tab
