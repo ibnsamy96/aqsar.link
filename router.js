@@ -35,9 +35,8 @@ const ShortLinkComponent = {
       .then((URL) => {
         console.log(this);
         ShortLinkComponent.open(URL);
-        // return URL;
       })
-      .catch((data) => console.log(data));
+      .catch((data) => ShortLinkComponent.open("404"));
   },
   open: (URL) => {
     window.open(URL, "_self"); // open link in new tab
@@ -58,7 +57,7 @@ const ErrorComponent = {
 // Routes
 const routes = [
   { path: "/", component: HomeComponent },
-  { path: "/error", component: ErrorComponent },
+  { path: "/404", component: ErrorComponent },
 ];
 
 const router = () => {
@@ -80,7 +79,6 @@ const router = () => {
     if (slug !== "" && slug !== " ") {
       component.get(slug);
     }
-    // component.open("http://facebook.com");
   } else {
     const appDiv = document.querySelector("#app");
     appDiv.innerHTML = component.render();
