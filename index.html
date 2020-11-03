@@ -6,17 +6,28 @@
     <title>Ibn Samy Short Links</title>
   </head>
   <body>
-    <input type="text" name="link" id="link" />
-    <button onclick="createNewShortLink()">Create</button>
+    <section>
+      <form action="javascript:;" onsubmit="createNewShortLink()">
+        <label for="link">Url to shorten:</label>
+        <input type="text" name="link" id="link" required />
+        <small id="urlValidity"></small>
+        <!-- <label for="slug">Optional. Custom micro url:</label>
+        <input type="text" name="slug" id="slug" /> -->
+        <input type="submit" value="Create" />
+      </form>
+    </section>
+
+    <!-- <input type="text" name="link" id="link" />
+    <button onclick="createNewShortLink()">Create</button> -->
     <p id="result"></p>
     <button onclick="copyShortLink()">Copy</button>
-    <!-- <hr />
+    <hr />
     <nav>
       <a href="#/">Home</a> - <a href="#/slug">slug</a> -
-      <a href="#/error">error</a>
+      <a href="#/404">error</a>
     </nav>
-    <div id="app"></div> -->
+    <div id="app"></div>
     <script src="./app.js"></script>
-    <!-- <script src="./router.js"></script> -->
+    <script src="./router.js"></script>
   </body>
 </html>

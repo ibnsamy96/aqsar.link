@@ -20,17 +20,12 @@ const getData = async (url = "") => {
   return request.json();
 };
 
-function validateURL(str) {
+function validateURL(url) {
   const pattern = new RegExp(
-    "^(https?:\\/\\/)?" + // protocol
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|" + // domain name
-      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-      "(\\#[-a-z\\d_]*)?$",
+    "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$",
     "i"
   ); // fragment locator
-  return pattern.test(str);
+  return pattern.test(url);
 }
 
 async function checkSlug(slug) {
@@ -76,27 +71,33 @@ async function generateSlug(length) {
 
 const link = document.querySelector("#link");
 const result = document.querySelector("#result");
+const urlValidity = document.querySelector("#urlValidity");
 
 // eslint-disable-next-line no-unused-vars
 function createNewShortLink() {
   let randomSlug;
   const domain = link.value;
-
-  generateSlug(5)
-    .then((slug) => {
-      randomSlug = slug;
-      console.log(randomSlug);
-    })
-    .then(() => {
-      return putData(`${databaseApi}/${randomSlug}.json`, { domain });
-    })
-    .then((res) => {
-      console.log(res);
-    })
-    .then(() => {
-      result.innerText = `aqsar.xyz/${randomSlug}`;
-    })
-    .catch((err) => console.log(err));
+  if (validateURL(domain)) {
+    console.log("domain is valid!");
+    generateSlug(5)
+      .then((slug) => {
+        randomSlug = slug;
+        console.log(randomSlug);
+      })
+      .then(() => {
+        return putData(`${databaseApi}/${randomSlug}.json`, { domain });
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .then(() => {
+        result.innerText = `aqsar.xyz/${randomSlug}`;
+      })
+      .catch((err) => console.log(err));
+  } else {
+    console.log("unvalid");
+    urlValidity.innerText = "URL isn't valid!";
+  }
 }
 
 // eslint-disable-next-line no-unused-vars
