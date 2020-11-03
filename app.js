@@ -20,10 +20,9 @@ const getData = async (url = '') => {
   };
 
 
+
   
 // TODO generate codes as Firebase codes has '-' and domains mustn't have one
-
-
 
 const link = document.querySelector('#link');
 const result = document.querySelector('#result');
