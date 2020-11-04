@@ -1,4 +1,5 @@
-const databaseApi = "https://ibn-samy-short-links.firebaseio.com/links";
+// eslint-disable-next-line import/extensions
+import { databaseApi, getData } from "./router.js";
 
 console.log("medo");
 
@@ -10,12 +11,6 @@ const putData = async (url = "", data = {}) => {
     mode: "cors",
     credentials: "same-origin",
   });
-
-  return request.json();
-};
-
-const getData = async (url = "") => {
-  const request = await fetch(url, { mode: "cors", method: "GET" });
 
   return request.json();
 };
@@ -36,13 +31,13 @@ async function checkSlug(slug) {
       `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
     );
     // console.log(data);
-    const data_1 = data[`${slug}`].domain;
+    const slugDomain = data[`${slug}`].domain;
     console.log(data);
-    console.log(data_1);
+    console.log(slugDomain);
     console.log(false);
     return false;
-  } catch (data_2) {
-    console.log(data_2);
+  } catch (error) {
+    console.log(error);
 
     return true;
   }
@@ -74,7 +69,7 @@ const result = document.querySelector("#result");
 const urlValidity = document.querySelector("#urlValidity");
 
 // eslint-disable-next-line no-unused-vars
-function createNewShortLink() {
+window.createNewShortLink = () => {
   let randomSlug;
   const domain = link.value;
   if (validateURL(domain)) {
@@ -98,10 +93,10 @@ function createNewShortLink() {
     console.log("unvalid");
     urlValidity.innerText = "URL isn't valid!";
   }
-}
+};
 
 // eslint-disable-next-line no-unused-vars
-function copyShortLink() {
+window.copyShortLink = () => {
   // copy link to clipboard
   const temporaryInput = document.createElement("input");
   temporaryInput.setAttribute("value", result.innerText);
@@ -113,4 +108,6 @@ function copyShortLink() {
     console.warn("Copy to clipboard failed.", error);
   }
   document.body.removeChild(temporaryInput);
-}
+};
+
+// TODO create QR code for links

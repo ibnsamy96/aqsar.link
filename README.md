@@ -1,6 +1,6 @@
 # Qassar - Link Shortener
 
-### Simple link shortener that takes URL from the user and gives him a short link that's easier to share.
+### Simple link shortener that takes URL from the user and gives him an easier to share short link.
 
 ### It's a front-end app and the user's URL and its shortcut are saved in firebase realtime database. the app has a simple router to act like a SPA.
 

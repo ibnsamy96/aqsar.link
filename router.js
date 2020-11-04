@@ -1,6 +1,7 @@
-const databaseApi = "https://ibn-samy-short-links.firebaseio.com/links";
+// eslint-disable-next-line import/prefer-default-export
+export const databaseApi = "https://ibn-samy-short-links.firebaseio.com/links";
 
-const getData = async (url = "") => {
+export const getData = async (url = "") => {
   const request = await fetch(url, { mode: "cors", method: "GET" });
 
   return request.json();
@@ -36,7 +37,7 @@ const ShortLinkComponent = {
         console.log(this);
         ShortLinkComponent.open(URL);
       })
-      .catch((data) => ShortLinkComponent.open("#/404"));
+      .catch(() => ShortLinkComponent.open("#/404"));
   },
   open: (URL) => {
     window.open(URL, "_self"); // open link in new tab
