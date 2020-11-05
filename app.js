@@ -67,8 +67,9 @@ async function generateSlug(length) {
 const link = document.querySelector("#link");
 const result = document.querySelector("#result");
 const urlValidity = document.querySelector("#urlValidity");
+const copyBTN = document.querySelector('button[onclick="copyShortLink()"]');
+const qrBTN = document.querySelector('button[onclick="createQR()"]');
 
-// eslint-disable-next-line no-unused-vars
 window.createNewShortLink = () => {
   let randomSlug;
   const domain = link.value;
@@ -84,18 +85,19 @@ window.createNewShortLink = () => {
       })
       .then((res) => {
         console.log(res);
+        result.innerText = `aqsar.xyz/${randomSlug}`;
       })
       .then(() => {
-        result.innerText = `aqsar.xyz/${randomSlug}`;
+        copyBTN.style.display = "inline";
+        qrBTN.style.display = "inline";
       })
       .catch((err) => console.log(err));
   } else {
-    console.log("unvalid");
+    console.log("invalid");
     urlValidity.innerText = "URL isn't valid!";
   }
 };
 
-// eslint-disable-next-line no-unused-vars
 window.copyShortLink = () => {
   // copy link to clipboard
   const temporaryInput = document.createElement("input");
@@ -111,3 +113,18 @@ window.copyShortLink = () => {
 };
 
 // TODO create QR code for links
+
+window.createQR = async () => {
+  const url = result.innerText;
+  const qrImg = document.querySelector("#qrImg");
+  qrImg.setAttribute(
+    "src",
+    `http://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100`
+  );
+  qrImg.style.display = "block";
+  console.log(url);
+  // const request = await fetch(
+
+  // );
+  // console.log(response.json);
+};
