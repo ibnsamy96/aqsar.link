@@ -85,7 +85,7 @@ window.createNewShortLink = () => {
       })
       .then((res) => {
         console.log(res);
-        result.innerText = `aqsar.xyz/${randomSlug}`;
+        result.innerText = `${window.location.host}/#/${randomSlug}`;
       })
       .then(() => {
         copyBTN.style.display = "inline";
