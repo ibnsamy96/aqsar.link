@@ -119,7 +119,7 @@ window.createQR = async () => {
   const qrImg = document.querySelector("#qrImg");
   qrImg.setAttribute(
     "src",
-    `http://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100`
+    `https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100`
   );
   qrImg.style.display = "block";
   console.log(url);
