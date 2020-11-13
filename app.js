@@ -1,5 +1,8 @@
 // eslint-disable-next-line import/extensions
-import { databaseApi, getData } from "./router.js";
+import {
+  databaseApi,
+  getData
+} from "./router.js";
 
 console.log("medo");
 
@@ -7,7 +10,9 @@ const putData = async (url = "", data = {}) => {
   const request = await fetch(url, {
     method: "PUT",
     body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json"
+    },
     mode: "cors",
     credentials: "same-origin",
   });
@@ -64,13 +69,24 @@ async function generateSlug(length) {
   return generateSlug(length + 1);
 }
 
-const link = document.querySelector("#link");
-const result = document.querySelector("#result");
-const urlValidity = document.querySelector("#urlValidity");
-const copyBTN = document.querySelector('button[onclick="copyShortLink()"]');
-const qrBTN = document.querySelector('button[onclick="createQR()"]');
+let link;
+let result;
+let urlValidity;
+let copyBTN;
+let qrBTN;
+
+function defineVariable() {
+  link = document.querySelector("#link");
+  result = document.querySelector("#result");
+  urlValidity = document.querySelector("#urlValidity");
+  copyBTN = document.querySelector('button[onclick="copyShortLink()"]');
+  qrBTN = document.querySelector('button[onclick="createQR()"]');
+}
 
 window.createNewShortLink = () => {
+  if (!link) {
+    defineVariable();
+  }
   let randomSlug;
   const domain = link.value;
   if (validateURL(domain)) {
@@ -81,7 +97,9 @@ window.createNewShortLink = () => {
         console.log(randomSlug);
       })
       .then(() => {
-        return putData(`${databaseApi}/${randomSlug}.json`, { domain });
+        return putData(`${databaseApi}/${randomSlug}.json`, {
+          domain
+        });
       })
       .then((res) => {
         console.log(res);

@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ibn Samy Short Links</title>
-  </head>
-  <body>
-    <section>
-      <form action="javascript:;" onsubmit="createNewShortLink()">
-        <label for="link">Url to shorten:</label>
-        <input type="text" name="link" id="link" required />
-        <small id="urlValidity"></small>
-        <!-- <label for="slug">Optional. Custom micro url:</label>
-        <input type="text" name="slug" id="slug" /> -->
-        <input type="submit" value="Create" />
-      </form>
-    </section>
 
-    <!-- <input type="text" name="link" id="link" />
-    <button onclick="createNewShortLink()">Create</button> -->
-    <p id="result"></p>
-    <button class='displayNone' onclick="copyShortLink()">Copy</button>
-    <button class='displayNone' onclick="createQR()">Create QR</button>
-    <img src="" id="qrImg" class='displayNone' />
-    <hr />
-    <nav>
-      <a href="#/">Home</a> - <a href="#/slug">slug</a> -
-      <a href="#/404">error</a>
-    </nav>
-    <div id="app"></div>
-    <script type="module" src="./app.js"></script>
-    <script type="module" src="./router.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Ibn Samy Short Links</title>
+</head>
+
+<body>
+  <nav>
+    <a href="#/">Home</a> - <a href="#/slug">slug</a> -
+    <a href="#/404">error</a>
+  </nav>
+  <div id="app" style="margin-top: 20px"></div>
+  <script type="module" src="./app.js"></script>
+  <script type="module" src="./router.js"></script>
+</body>
+
 </html>

@@ -2,7 +2,10 @@
 export const databaseApi = "https://ibn-samy-short-links.firebaseio.com/links";
 
 export const getData = async (url = "") => {
-  const request = await fetch(url, { mode: "cors", method: "GET" });
+  const request = await fetch(url, {
+    mode: "cors",
+    method: "GET"
+  });
 
   return request.json();
 };
@@ -11,10 +14,25 @@ export const getData = async (url = "") => {
 const HomeComponent = {
   render: () => {
     return `
-        <section>
-          <h1>Home</h1>
-          <p>This is just a test</p>
-        </section>
+    <section>
+    <form action="javascript:;" onsubmit="createNewShortLink()">
+      <label for="link">Url to shorten:</label>
+      <input type="text" name="link" id="link" required />
+      <small id="urlValidity"></small>
+      <!-- <label for="slug">Optional. Custom micro url:</label>
+      <input type="text" name="slug" id="slug" /> -->
+      <input type="submit" value="Create" />
+    </form>
+  </section>
+
+  <!-- <input type="text" name="link" id="link" />
+  <button onclick="createNewShortLink()">Create</button> -->
+  <p id="result"></p>
+  <button class='displayNone' onclick="copyShortLink()">Copy</button>
+  <button class='displayNone' onclick="createQR()">Create QR</button>
+  <img src="" id="qrImg" class='displayNone' />
+  <script type="module" src="./app.js"></script>
+
       `;
   },
 };
@@ -26,8 +44,8 @@ const ShortLinkComponent = {
     );
 
     return getData(
-      `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
-    )
+        `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
+      )
       .then((data) => {
         console.log(data);
         console.log(data[`${slug}`].domain);
@@ -56,9 +74,14 @@ const ErrorComponent = {
 };
 
 // Routes
-const routes = [
-  { path: "/", component: HomeComponent },
-  { path: "/404", component: ErrorComponent },
+const routes = [{
+    path: "/",
+    component: HomeComponent
+  },
+  {
+    path: "/404",
+    component: ErrorComponent
+  },
 ];
 
 const router = () => {
@@ -68,10 +91,12 @@ const router = () => {
   console.log(currentPath);
 
   // TODO: Find the component based on the current path
-  const { component = ShortLinkComponent } =
-    routes.find((route) => {
-      return route.path === currentPath;
-    }) || {};
+  const {
+    component = ShortLinkComponent
+  } =
+  routes.find((route) => {
+    return route.path === currentPath;
+  }) || {};
 
   // TODO: Render the component in the "app" placeholder
   if (component === ShortLinkComponent) {
