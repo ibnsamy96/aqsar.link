@@ -58,7 +58,7 @@ const ShortLinkComponent = {
       .catch(() => ShortLinkComponent.open("#/404"));
   },
   open: (URL) => {
-    window.open(URL, "_self"); // open link in new tab
+    window.open(URL, "_self"); // open link in the same tap
   },
 };
 
@@ -112,9 +112,10 @@ const router = () => {
 };
 
 const test = () => {
-  console.log(window.location.hash);
+  console.log('pathname: ', window.location.pathname);
+  console.log('hash: ', window.location.hash);
   router();
 };
 
-window.addEventListener("load", router);
+window.addEventListener("load", test);
 window.addEventListener("hashchange", test);
