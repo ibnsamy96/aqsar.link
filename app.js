@@ -106,8 +106,11 @@ window.createNewShortLink = () => {
         result.innerText = `${window.location.host}/#/${randomSlug}`;
       })
       .then(() => {
+        copyBTN.className = '';
         copyBTN.style.display = "inline";
+        qrBTN.className = '';
         qrBTN.style.display = "inline";
+
       })
       .catch((err) => console.log(err));
   } else {
