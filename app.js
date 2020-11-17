@@ -133,10 +133,10 @@ window.copyShortLink = () => {
   document.body.removeChild(temporaryInput);
 };
 
-// TODO create QR code for links
+// create QR code for links
 
-window.createQR = async () => {
-  const url = result.innerText;
+window.createQR = () => {
+  const url = `https://${result.innerText}`;
   const qrImg = document.querySelector("#qrImg");
   qrImg.setAttribute(
     "src",

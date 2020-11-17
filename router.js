@@ -86,12 +86,12 @@ const routes = [{
 ];
 
 const router = () => {
-  // TODO: Get the current path
+  //  Get the current path
   const currentPath = window.location.pathname || '/';
   // const currentPath = window.location.hash.slice(1) || "/"; // way of tutorial
   console.log(currentPath);
 
-  // TODO: Find the component based on the current path
+  //  Find the component based on the current path
   const {
     component = ShortLinkComponent
   } =
@@ -99,7 +99,7 @@ const router = () => {
     return route.path === currentPath;
   }) || {};
 
-  // TODO: Render the component in the "app" placeholder
+  //  Render the component in the "app" placeholder
   if (component === ShortLinkComponent) {
     const slug = currentPath.split("/")[1];
     console.log(slug);
