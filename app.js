@@ -142,7 +142,7 @@ window.createQR = async () => {
     "src",
     `https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100`
   );
-  qrBTN.className = '';
+  qrImg.className = '';
   qrImg.style.display = "block";
   console.log(url);
   // const request = await fetch(
