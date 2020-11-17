@@ -37,6 +37,17 @@ const HomeComponent = {
   },
 };
 
+const ErrorComponent = {
+  render: () => {
+    return `
+        <section>
+          <h1>Error</h1>
+          <p>This is just a test</p>
+        </section>
+      `;
+  },
+};
+
 const ShortLinkComponent = {
   get: (slug) => {
     console.log(
@@ -55,25 +66,15 @@ const ShortLinkComponent = {
         console.log(this);
         ShortLinkComponent.open(URL);
       })
-      .catch(() => ShortLinkComponent.open("#/404"));
+      .catch(() => ErrorComponent.render());
   },
   open: (URL) => {
     window.open(URL, "_self"); // open link in the same tap
   },
 };
 
-const ErrorComponent = {
-  render: () => {
-    return `
-        <section>
-          <h1>Error</h1>
-          <p>This is just a test</p>
-        </section>
-      `;
-  },
-};
-
 // Routes
+// TODO add other pages routes in here
 const routes = [{
     path: "/",
     component: HomeComponent
@@ -86,8 +87,8 @@ const routes = [{
 
 const router = () => {
   // TODO: Get the current path
-  //   const currentPath = window.location.pathname;
-  const currentPath = window.location.hash.slice(1) || "/"; // way of tutorial
+  const currentPath = window.location.pathname || '/';
+  // const currentPath = window.location.hash.slice(1) || "/"; // way of tutorial
   console.log(currentPath);
 
   // TODO: Find the component based on the current path
