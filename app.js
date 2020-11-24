@@ -142,7 +142,7 @@ window.createQR = () => {
   const qrImg = document.querySelector("#qrImg");
   qrImg.setAttribute(
     "src",
-    `https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100`
+    `https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100&color=DC143C&bgcolor=255-255-255`
   );
   qrImg.className = '';
   qrImg.style.display = "block";
