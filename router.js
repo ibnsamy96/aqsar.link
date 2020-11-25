@@ -31,10 +31,28 @@ const HomeComponent = {
   <button class='displayNone' onclick="copyShortLink()">Copy</button>
   <button class='displayNone' onclick="createQR()">Create QR</button>
   <img src="" id="qrImg" class='displayNone' />
-  <script type="module" src="./app.js"></script>
 
       `;
   },
+  injectCode: () => {
+    return [{
+        'operation': 'editInnerText',
+        'querySelector': 'title',
+        'newText': 'Aqsar Link | Home'
+      },
+      {
+        'operation': 'editAttribute',
+        'querySelector': 'body',
+        'attribute': 'id',
+        'newValue': 'body'
+      }, {
+        'operation': 'append',
+        'querySelector': 'body',
+        'position': 'beforeend',
+        'code': `<script type="module" src="./app.js"></script>`
+      }
+    ]
+  }
 };
 
 const ErrorComponent = {
@@ -46,27 +64,34 @@ const ErrorComponent = {
         </section>
       `;
   },
+  injectCode: () => {
+    return [{
+      'operation': 'editInnerText',
+      'querySelector': 'title',
+      'newText': 'Aqsar Link | Error'
+    }]
+  }
 };
 
 const ShortLinkComponent = {
-  get: (slug) => {
+  // eslint-disable-next-line consistent-return
+  get: async (slug) => {
     console.log(
       `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
     );
 
-    return getData(
+    try {
+      const data = await getData(
         `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
-      )
-      .then((data) => {
-        console.log(data);
-        console.log(data[`${slug}`].domain);
-        return data[`${slug}`].domain;
-      })
-      .then((URL) => {
-        console.log(this);
-        ShortLinkComponent.open(URL);
-      })
-      .catch(() => ErrorComponent.render());
+      );
+      console.log(data);
+      console.log(data[`${slug}`].domain);
+      const URL = data[`${slug}`].domain;
+      console.log(this);
+      ShortLinkComponent.open(URL);
+    } catch (e) {
+      return ErrorComponent.render();
+    }
   },
   open: (URL) => {
     window.open(URL, "_self"); // open link in the same tap
@@ -109,6 +134,25 @@ const router = () => {
   } else {
     const appDiv = document.querySelector("#app");
     appDiv.innerHTML = component.render();
+    try {
+      component.injectCode().forEach(codeInfo => {
+        const element = document.querySelector(codeInfo.querySelector)
+        if (codeInfo.operation === 'editInnerText') {
+          element.innerText = codeInfo.newText
+
+        } else if (codeInfo.operation === 'editAttribute') {
+          element.setAttribute(codeInfo.attribute, codeInfo.newValue)
+
+
+        } else if (codeInfo.operation === 'append') {
+          element.insertAdjacentHTML(codeInfo.position, codeInfo.code)
+
+        }
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 
