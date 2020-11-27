@@ -42,8 +42,3 @@ export const HomeComponent = {
     ]
   }
 };
-
-
-
-
-console.log(HomeComponent);

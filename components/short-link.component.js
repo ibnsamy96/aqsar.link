@@ -1,7 +1,7 @@
 import {
     databaseApi,
     getData
-} from "./router.js";
+} from "../api-comm.js";
 
 // eslint-disable-next-line import/prefer-default-export
 export const ShortLinkComponent = {

@@ -1,102 +1,16 @@
-// eslint-disable-next-line import/prefer-default-export
-export const databaseApi = "https://ibn-samy-short-links.firebaseio.com/links";
-
-export const getData = async (url = "") => {
-  const request = await fetch(url, {
-    mode: "cors",
-    method: "GET"
-  });
-
-  return request.json();
-};
+/* eslint-disable import/extensions */
 
 // Components
-const HomeComponent = {
-  render: () => {
-    return `
-    <section>
-    <form action="javascript:;" onsubmit="createNewShortLink()">
-      <label for="link">Url to shorten:</label>
-      <input type="text" name="link" id="link" required />
-      <small id="urlValidity"></small>
-      <!-- <label for="slug">Optional. Custom micro url:</label>
-      <input type="text" name="slug" id="slug" /> -->
-      <input type="submit" value="Create" />
-    </form>
-  </section>
+import {
+  HomeComponent
+} from "./components/home.component.js";
+import {
+  ErrorComponent
+} from "./components/error.component.js";
+import {
+  ShortLinkComponent
+} from "./components/short-link.component.js";
 
-  <!-- <input type="text" name="link" id="link" />
-  <button onclick="createNewShortLink()">Create</button> -->
-  <p id="result"></p>
-  <button class='displayNone' onclick="copyShortLink()">Copy</button>
-  <button class='displayNone' onclick="createQR()">Create QR</button>
-  <img src="" id="qrImg" class='displayNone' />
-
-      `;
-  },
-  injectCode: () => {
-    return [{
-        'operation': 'editInnerText',
-        'querySelector': 'title',
-        'newText': 'Aqsar Link | Home'
-      },
-      {
-        'operation': 'editAttribute',
-        'querySelector': 'body',
-        'attribute': 'id',
-        'newValue': 'body'
-      }, {
-        'operation': 'append',
-        'querySelector': 'body',
-        'position': 'beforeend',
-        'code': `<script type="module" src="./app.js"></script>`
-      }
-    ]
-  }
-};
-
-const ErrorComponent = {
-  render: () => {
-    return `
-        <section>
-          <h1>Error</h1>
-          <p>This is just a test</p>
-        </section>
-      `;
-  },
-  injectCode: () => {
-    return [{
-      'operation': 'editInnerText',
-      'querySelector': 'title',
-      'newText': 'Aqsar Link | Error'
-    }]
-  }
-};
-
-const ShortLinkComponent = {
-  // eslint-disable-next-line consistent-return
-  get: async (slug) => {
-    console.log(
-      `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
-    );
-
-    try {
-      const data = await getData(
-        `${databaseApi}.json?orderBy="$key"&equalTo="${slug}"&print=pretty`
-      );
-      console.log(data);
-      console.log(data[`${slug}`].domain);
-      const URL = data[`${slug}`].domain;
-      console.log(this);
-      ShortLinkComponent.open(URL);
-    } catch (e) {
-      return ErrorComponent.render();
-    }
-  },
-  open: (URL) => {
-    window.open(URL, "_self"); // open link in the same tap
-  },
-};
 
 // Routes
 // TODO add other pages routes in here

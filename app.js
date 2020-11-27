@@ -2,7 +2,7 @@
 import {
   databaseApi,
   getData
-} from "./router.js";
+} from "./api-comm.js";
 
 console.log("medo");
 
