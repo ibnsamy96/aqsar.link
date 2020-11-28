@@ -1,8 +1,11 @@
-// eslint-disable-next-line import/extensions
+/* eslint-disable import/extensions */
 import {
   databaseApi,
   getData
 } from "./api-comm.js";
+import {
+  LoadingComponent
+} from "./components/loading.component.js";
 
 console.log("medo");
 
