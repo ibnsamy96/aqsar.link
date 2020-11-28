@@ -59,11 +59,5 @@ export const LoadingComponent = {
       </style>
         `;
     },
-    injectCode: () => {
-        return [{
-            'operation': 'editInnerText',
-            'querySelector': 'title',
-            'newText': 'Aqsar Link | Error'
-        }]
-    }
+    injectCode: () => {}
 };
