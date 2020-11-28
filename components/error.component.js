@@ -12,7 +12,7 @@ export const ErrorComponent = {
     return [{
       'operation': 'editInnerText',
       'querySelector': 'title',
-      'newText': 'Aqsar Link | Error'
+      'newText': 'Aqsar Link | Page Not Found'
     }]
   }
 };
