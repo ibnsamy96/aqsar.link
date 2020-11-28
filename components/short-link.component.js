@@ -22,9 +22,11 @@ export const ShortLinkComponent = {
                 console.log(this);
                 ShortLinkComponent.open(URL);
             })
-            .catch(() => this.render());
+            .catch(
+                () => window.open('404', "_self") // open link in the same tap
+            );
     },
     open: (URL) => {
         window.open(URL, "_self"); // open link in the same tap
-    },
+    }
 };
