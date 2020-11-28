@@ -24,6 +24,32 @@ const routes = [{
   },
 ];
 
+function renderComponent(component) {
+
+  const appDiv = document.querySelector("#app");
+  appDiv.innerHTML = component.render();
+  try {
+    component.injectCode().forEach(codeInfo => {
+      const element = document.querySelector(codeInfo.querySelector)
+      if (codeInfo.operation === 'editInnerText') {
+        element.innerText = codeInfo.newText
+
+      } else if (codeInfo.operation === 'editAttribute') {
+        element.setAttribute(codeInfo.attribute, codeInfo.newValue)
+
+
+      } else if (codeInfo.operation === 'append') {
+        element.insertAdjacentHTML(codeInfo.position, codeInfo.code)
+
+      }
+    });
+
+  } catch (error) {
+    console.log(error);
+  }
+
+}
+
 const router = () => {
   //  Get the current path
   const currentPath = window.location.pathname || '/';
@@ -46,29 +72,10 @@ const router = () => {
       component.get(slug);
     }
   } else {
-    const appDiv = document.querySelector("#app");
-    appDiv.innerHTML = component.render();
-    try {
-      component.injectCode().forEach(codeInfo => {
-        const element = document.querySelector(codeInfo.querySelector)
-        if (codeInfo.operation === 'editInnerText') {
-          element.innerText = codeInfo.newText
-
-        } else if (codeInfo.operation === 'editAttribute') {
-          element.setAttribute(codeInfo.attribute, codeInfo.newValue)
-
-
-        } else if (codeInfo.operation === 'append') {
-          element.insertAdjacentHTML(codeInfo.position, codeInfo.code)
-
-        }
-      });
-
-    } catch (error) {
-      console.log(error);
-    }
+    renderComponent(component)
   }
 };
+
 
 const test = () => {
   console.log('pathname: ', window.location.pathname);
