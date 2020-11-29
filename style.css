@@ -27,6 +27,7 @@ input {
 
 .btn {
     height: 100%;
+    border-radius: 10px !important;
 }
 
 .btn-primary,
@@ -38,6 +39,17 @@ input {
     border: none !important;
     box-shadow: none !important;
     color: white;
+}
+
+.btn-secondary,
+.btn-secondary:visited,
+.btn-secondary:focus,
+.btn-secondary:hover,
+.btn-secondary:active {
+    background-color: white !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #BB0A1E;
 }
 
 
@@ -64,7 +76,22 @@ input:-internal-autofill-selected {
 }
 
 #submitBTN {
-    border-radius: 10px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+#shortenedLinksHeadline {
+    font-size: 1.3rem;
+    text-align: right;
+}
+
+#shortenedLinksHeadline::after {
+    content: '';
+    height: 1px;
+    position: absolute;
+    top: 30%;
+    /* left: 100%; */
+    width: 60%;
+    left: 15px;
+    background-color: white;
 }

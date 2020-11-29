@@ -23,8 +23,8 @@
                 </div>
             </div>
             <section id='formSection'>
-                <form>
-                    <div action="javascript:;" onsubmit="createNewShortLink()" class="form-row justify-content-center">
+                <form action="javascript:;" onsubmit="createNewShortLink()">
+                    <div class="form-row justify-content-center">
                         <div class='col-5 pl-0'>
                             <input class="form-control" type="text" name="link" id="link" required />
                         </div>
@@ -39,20 +39,19 @@
                 <div class="col-md-6">
                     <h2 id='shortenedLinksHeadline' class="">آخر الروابط المقصرة</h2>
                     <div class='linkGroup'>
-                        <!-- Delete this paragraph -->
-                        <p id="result"></p>
-                        <!--  -->
                         <p class="shortLink"></p>
                         <p class="longLink"></p>
-                        <button class='copyBTN btn btn-secondary' hidden='true' onclick="copyShortLink()">Copy</button>
-                        <button class='qrBTN btn btn-secondary' hidden='true' onclick="createQR()">Create QR</button>
+                        <button class='copyBTN btn btn-secondary' style="display: none;"
+                            onclick="copyShortLink()">Copy</button>
+                        <button class='qrBTN btn btn-secondary' style="display: none;" onclick="createQR()">Create
+                            QR</button>
                     </div>
                 </div>
             </section>
             <section id='qrCodeOverlay'>
                 <div id='qrBox'>
                     <i id='closeOverlay'></i>
-                    <img src="" id="qrImg" hidden='true' />
+                    <img src="" id="qrImg" style="display: none;" />
                     <a id='downloadQRImg'></a>
                 </div>
             </section>

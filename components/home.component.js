@@ -11,8 +11,8 @@ export const HomeComponent = {
               </div>
           </div>
           <section id='formSection'>
-              <form>
-                  <div action="javascript:;" onsubmit="createNewShortLink()" class="form-row justify-content-center">
+              <form action="javascript:;" onsubmit="createNewShortLink()" >
+                  <div class="form-row justify-content-center">
                       <div class='col-5 pl-0'>
                           <input class="form-control" type="text" name="link" id="link" required />
                       </div>
@@ -32,15 +32,15 @@ export const HomeComponent = {
                       <!--  -->
                       <p class="shortLink"></p>
                       <p class="longLink"></p>
-                      <button class='copyBTN btn btn-secondary' hidden='true' onclick="copyShortLink()">Copy</button>
-                      <button class='qrBTN btn btn-secondary' hidden='true' onclick="createQR()">Create QR</button>
+                      <button class="btn btn-secondary copyBTN" style='display:none'  onclick="copyShortLink()">Copy</button>
+                      <button class="btn btn-secondary qrBTN" style='display:none'  onclick="createQR()">Create QR</button>
                   </div>
               </div>
           </section>
           <section id='qrCodeOverlay'>
               <div id='qrBox'>
                   <i id='closeOverlay'></i>
-                  <img src="" id="qrImg" hidden='true' />
+                  <img src="" id="qrImg"  style='display:none'  />
                   <a id='downloadQRImg'></a>
               </div>
           </section>

@@ -76,14 +76,16 @@ async function generateSlug(length) {
 }
 
 let link;
-let result;
+let shortLinkParagraph;
+let longLinkParagraph;
 let urlValidity;
 let copyBTN;
 let qrBTN;
 
 function defineVariable() {
   link = document.querySelector("#link");
-  result = document.querySelector("#result");
+  shortLinkParagraph = document.querySelector(".shortLink");
+  longLinkParagraph = document.querySelector(".longLink");
   urlValidity = document.querySelector("#urlValidity");
   copyBTN = document.querySelector('button[onclick="copyShortLink()"]');
   qrBTN = document.querySelector('button[onclick="createQR()"]');
@@ -109,12 +111,12 @@ window.createNewShortLink = () => {
       })
       .then((res) => {
         console.log(res);
-        result.innerText = `${window.location.host}/${randomSlug}`;
+        console.log(shortLinkParagraph);
+        shortLinkParagraph.innerText = `${window.location.host}/${randomSlug}`;
+        longLinkParagraph.innerText = domain;
       })
       .then(() => {
-        copyBTN.className = '';
         copyBTN.style.display = "inline";
-        qrBTN.className = '';
         qrBTN.style.display = "inline";
 
       })
@@ -128,7 +130,7 @@ window.createNewShortLink = () => {
 window.copyShortLink = () => {
   // copy link to clipboard
   const temporaryInput = document.createElement("input");
-  temporaryInput.setAttribute("value", result.innerText);
+  temporaryInput.setAttribute("value", shortLinkParagraph.innerText);
   document.body.appendChild(temporaryInput);
   temporaryInput.select();
   try {
@@ -142,7 +144,7 @@ window.copyShortLink = () => {
 // create QR code for links
 
 window.createQR = () => {
-  const url = `https://${result.innerText}`;
+  const url = shortLinkParagraph.innerText;
   const qrImg = document.querySelector("#qrImg");
   qrImg.setAttribute(
     "src",
