@@ -9,6 +9,27 @@ import {
   LoadingComponent
 } from "./components/loading.component.js";
 
+let previouslyShortened = [];
+
+function saveToLocalStorage(linksArray) {
+  localStorage.setItem('linksArray', JSON.stringify(linksArray))
+}
+
+function getFromLocalStorage() {
+  return JSON.parse(localStorage.getItem('linksArray'))
+}
+
+function fetchLocalStorage() {
+  const linksArray = getFromLocalStorage()
+  if (linksArray) {
+    // eslint-disable-next-line no-unused-vars
+    previouslyShortened = [...linksArray]
+  }
+}
+
+fetchLocalStorage()
+
+
 function validateURL(url) {
 
   const pattern = new RegExp(
@@ -97,6 +118,11 @@ window.createNewShortLink = () => {
       .then((res) => {
         console.log(res);
         console.log(shortLinkParagraph);
+        previouslyShortened.push({
+          randomSlug,
+          domain
+        })
+        console.log(previouslyShortened);
         shortLinkParagraph.innerText = `${window.location.host}/${randomSlug}`;
         longLinkParagraph.innerText = domain;
       })
@@ -108,7 +134,7 @@ window.createNewShortLink = () => {
       .catch((err) => console.log(err));
   } else {
     console.log("invalid");
-    urlValidity.innerText = "URL isn't valid!";
+    urlValidity.innerText = "الرابط غير صالح، تأكد من وجود http:// أو https:// قبل الرابط";
   }
 };
 
