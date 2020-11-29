@@ -1,35 +1,20 @@
 /* eslint-disable import/extensions */
 import {
   databaseApi,
-  getData
+  getData,
+  putData
 } from "./api-comm.js";
 
 import {
   LoadingComponent
 } from "./components/loading.component.js";
 
-console.log("medo");
-
-const putData = async (url = "", data = {}) => {
-  const request = await fetch(url, {
-    method: "PUT",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
-    },
-    mode: "cors",
-    credentials: "same-origin",
-  });
-
-  return request.json();
-};
-
 function validateURL(url) {
 
   const pattern = new RegExp(
-    "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$",
+    "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,7}(:[0-9]{1,5})?(\\/.*)?$",
     "i"
-  ); // fragment locator
+  ); // fragment locator 
 
   return pattern.test(url);
 }

@@ -9,3 +9,17 @@ export const getData = async (url = "") => {
 
     return request.json();
 };
+
+export const putData = async (url = "", data = {}) => {
+    const request = await fetch(url, {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        },
+        mode: "cors",
+        credentials: "same-origin",
+    });
+
+    return request.json();
+};
