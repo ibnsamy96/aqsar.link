@@ -1,0 +1,37 @@
+html,
+body {
+    background-color: #DC143C;
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    text-align: center;
+}
+
+#app {
+    width: 100%;
+    /* height: ; */
+}
+
+input {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+input#link,
+.linkGroup p {
+    direction: ltr;
+    text-align: left;
+}
+
+.btn-primary,
+.btn-primary:visited,
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: #BB0A1E !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.primaryFont {
+    font-family: 'Aref Ruqaa', serif;
+}
