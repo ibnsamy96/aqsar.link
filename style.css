@@ -6,12 +6,14 @@ body {
     direction: rtl;
     text-align: center;
     color: white;
+    position: relative;
+    z-index: -1;
 }
 
 .primaryText {
     font-family: 'Aref Ruqaa', serif;
     font-size: 10rem;
-    margin-top: -6rem !important;
+    /* margin-top: -6rem !important; */
 }
 
 #app {
@@ -19,10 +21,14 @@ body {
     /* height: ; */
 }
 
+.my-auto {
+    transition: margin 0.5s linear;
+}
+
 input {
     border: none !important;
     box-shadow: none !important;
-    height: 2.8rem !important;
+    height: 3.8rem !important;
 }
 
 .btn {
@@ -83,15 +89,37 @@ input:-internal-autofill-selected {
 #shortenedLinksHeadline {
     font-size: 1.3rem;
     text-align: right;
+    position: relative;
+    /* background-color: black; */
 }
 
-#shortenedLinksHeadline::after {
-    content: '';
-    height: 1px;
+#shortenedLinksHeadline span {
+    background-color: #DC143C;
+    padding-left: 20px;
+    font-size: 1.3rem;
+}
+
+
+#shortenedLinksHeadline ::after {
+    content: "";
     position: absolute;
-    top: 30%;
-    /* left: 100%; */
-    width: 60%;
-    left: 15px;
-    background-color: white;
+    bottom: 0;
+    left: 3px;
+    right: 0;
+    height: 0.5em;
+    border-top: 1px solid white;
+    /* background-color: brown; */
+    z-index: -1;
+}
+
+#shortenedLinks {
+    /* display: none; */
+    /* visibility: hidden; */
+    /* opacity: 0; */
+    transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+#shortenedLinks:hover {
+    visibility: visible;
+    opacity: 1 !important;
 }

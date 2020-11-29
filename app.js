@@ -19,15 +19,37 @@ function getFromLocalStorage() {
   return JSON.parse(localStorage.getItem('linksArray'))
 }
 
+function generateLinkGroups(shortenedLinks) {
+  let shortenedLinksHTMLCode = ``
+
+  shortenedLinks.forEach(link => {
+    const linkGroupHTML = `<div id='${link.slug}' class='linkGroup '> <p class = "shortLink" > https://${window.location.host}/${link.slug} </p>
+    <p class = "longLink" > ${link.domain} </p> <button class = 'copyBTN btn btn-secondary'
+  onclick = "copyShortLink('${link.slug}')" > Copy </button> 
+  <button class = 'qrBTN btn btn-secondary'
+  onclick = "createQR('${link.slug}')" > Create QR </button> 
+  </div>`
+    shortenedLinksHTMLCode = `${linkGroupHTML} ${shortenedLinksHTMLCode}`
+  });
+
+  return `<h2 id='shortenedLinksHeadline' class=""><span>آخر الروابط المقصرة</span></h2> ${shortenedLinksHTMLCode}`
+
+}
+
+function updateShortenedLinksElement(shortenedLinksHTMLCode) {
+  document.querySelector('#shortenedLinks .col-md-6').innerHTML = shortenedLinksHTMLCode;
+}
+
 function fetchLocalStorage() {
   const linksArray = getFromLocalStorage()
   if (linksArray) {
     // eslint-disable-next-line no-unused-vars
     previouslyShortened = [...linksArray]
   }
+  updateShortenedLinksElement(generateLinkGroups(previouslyShortened))
 }
 
-fetchLocalStorage()
+window.addEventListener('load', fetchLocalStorage)
 
 
 function validateURL(url) {
@@ -59,6 +81,8 @@ async function checkSlug(slug) {
     return true;
   }
 }
+
+
 
 // eslint-disable-next-line consistent-return
 async function generateSlug(length) {
@@ -119,17 +143,18 @@ window.createNewShortLink = () => {
         console.log(res);
         console.log(shortLinkParagraph);
         previouslyShortened.push({
-          randomSlug,
+          slug: randomSlug,
           domain
         })
         saveToLocalStorage(previouslyShortened)
+        updateShortenedLinksElement(generateLinkGroups(previouslyShortened))
         console.log(previouslyShortened);
-        shortLinkParagraph.innerText = `${window.location.host}/${randomSlug}`;
-        longLinkParagraph.innerText = domain;
+        // shortLinkParagraph.innerText = `${window.location.host}/${randomSlug}`;
+        // longLinkParagraph.innerText = domain;
       })
       .then(() => {
-        copyBTN.style.display = "inline";
-        qrBTN.style.display = "inline";
+        // copyBTN.style.display = "inline";
+        // qrBTN.style.display = "inline";
 
       })
       .catch((err) => console.log(err));
@@ -139,10 +164,10 @@ window.createNewShortLink = () => {
   }
 };
 
-window.copyShortLink = () => {
+window.copyShortLink = (slug) => {
   // copy link to clipboard
   const temporaryInput = document.createElement("input");
-  temporaryInput.setAttribute("value", shortLinkParagraph.innerText);
+  temporaryInput.setAttribute("value", `https://${window.location.host}/${slug}`);
   document.body.appendChild(temporaryInput);
   temporaryInput.select();
   try {
@@ -155,8 +180,8 @@ window.copyShortLink = () => {
 
 // create QR code for links
 
-window.createQR = () => {
-  const url = shortLinkParagraph.innerText;
+window.createQR = (slug) => {
+  const url = `https://${window.location.host}/${slug}`
   const qrImg = document.querySelector("#qrImg");
   qrImg.setAttribute(
     "src",

@@ -13,7 +13,7 @@ body {
 .primaryText {
     font-family: 'Aref Ruqaa', serif;
     font-size: 10rem;
-    margin-top: -6rem !important;
+    /* margin-top: -6rem !important; */
 }
 
 #app {
@@ -113,9 +113,9 @@ input:-internal-autofill-selected {
 }
 
 #shortenedLinks {
-    display: none;
-    visibility: hidden;
-    opacity: 0;
+    /* display: none; */
+    /* visibility: hidden; */
+    /* opacity: 0; */
     transition: visibility 0.5s, opacity 0.5s linear;
 }
 
