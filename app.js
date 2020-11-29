@@ -122,6 +122,7 @@ window.createNewShortLink = () => {
           randomSlug,
           domain
         })
+        saveToLocalStorage(previouslyShortened)
         console.log(previouslyShortened);
         shortLinkParagraph.innerText = `${window.location.host}/${randomSlug}`;
         longLinkParagraph.innerText = domain;
