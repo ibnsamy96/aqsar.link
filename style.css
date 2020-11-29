@@ -10,9 +10,11 @@ body {
     z-index: -1;
 }
 
+
 .primaryText {
     font-family: 'Aref Ruqaa', serif;
     font-size: 10rem;
+    /* font-size: 15vw; */
     /* margin-top: -6rem !important; */
 }
 
@@ -122,4 +124,49 @@ input:-internal-autofill-selected {
 #shortenedLinks:hover {
     visibility: visible;
     opacity: 1 !important;
+}
+
+
+
+
+
+
+
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1201px) {}
+
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 993px) {
+    .primaryText {
+        font-size: 8.7rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (max-width: 769px) {
+    .primaryText {
+        font-size: 7.5rem;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 577px) {
+    .primaryText {
+        font-size: 6rem;
+    }
+
+    .btn-primary {
+        font-size: 10px;
+    }
+}
+
+/* Extra Small devices (landscape phones, 576px and up) */
+@media (max-width: 400px) {
+    .primaryText {
+        font-size: 4rem;
+    }
+
+
 }

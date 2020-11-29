@@ -14,7 +14,7 @@
     <title>Aqsar Link | Home</title>
 </head>
 
-<body class="container h-100">
+<body class="container-md h-100">
     <div id="app" class=" row m-0 h-100">
         <main class='col my-auto'>
             <div class="row mb-5">
@@ -25,10 +25,11 @@
             <section id='formSection'>
                 <form action="javascript:;" onsubmit="createNewShortLink()">
                     <div class="form-row justify-content-center">
-                        <div class='col-5 pl-0'>
-                            <input class="form-control" type="text" name="link" id="link" required />
+                        <div class='col-9 col-sm-8 col-md-6 col-lg-5  p-0'>
+                            <input class="form-control" placeholder="ضع الرابط الطويل" type="text" name="link" id="link"
+                                required />
                         </div>
-                        <div class='col-auto pr-0'>
+                        <div class='col-auto p-0'>
                             <input id='submitBTN' class="btn btn-block btn-primary" type="submit" value="قصّر الرابط" />
                         </div>
                         <small class="form-text text-muted" id="urlValidity"></small>
