@@ -1,3 +1,70 @@
-.displayNone {
-    display: none !important;
+html,
+body {
+    height: 100%;
+    background-color: #DC143C;
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    text-align: center;
+    color: white;
+}
+
+.primaryText {
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 10rem;
+    margin-top: -6rem !important;
+}
+
+#app {
+    width: 100%;
+    /* height: ; */
+}
+
+input {
+    border: none !important;
+    box-shadow: none !important;
+    height: 2.8rem !important;
+}
+
+.btn {
+    height: 100%;
+}
+
+.btn-primary,
+.btn-primary:visited,
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: #BB0A1E !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: white;
+}
+
+
+input#link,
+.linkGroup p {
+    direction: ltr;
+    text-align: left;
+}
+
+input#link {
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+input:-webkit-autofill,
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected {
+    /* background-color: yellow !important;*/
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0 2rem white inset;
+    box-shadow: 0 0 0 2rem white inset;
+    -webkit-text-fill-color: black !important;
+}
+
+#submitBTN {
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
