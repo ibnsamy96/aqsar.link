@@ -41,23 +41,38 @@
                     <div class='linkGroup'>
                         <p class="shortLink"></p>
                         <p class="longLink"></p>
-                        <button class='copyBTN btn btn-secondary' style="display: none;"
-                            onclick="copyShortLink()">Copy</button>
-                        <button class='qrBTN btn btn-secondary' style="display: none;" onclick="createQR()">Create
-                            QR</button>
+                        <button class='copyBTN btn btn-secondary' onclick="copyShortLink()">Copy</button>
+                        <button class='qrBTN btn btn-secondary' onclick="createQR()">Create QR</button>
                     </div>
                 </div>
             </section>
             <section id='qrCodeOverlay'>
                 <div id='qrBox'>
                     <i id='closeOverlay'></i>
-                    <img src="" id="qrImg" style="display: none;" />
+                    <img src="" id="qrImg" />
                     <a id='downloadQRImg'></a>
                 </div>
             </section>
         </main>
     </div>
-    <script></script>
+    <script>
+        let previouslyShortened = [];
+
+        function checkPreviouslyShortened() {
+            if (previouslyShortened.length > 0) {
+                document.querySelector('#shortenedLinks').style.display = 'flex'
+                document.querySelector('#shortenedLinks').style.visibility = 'visible'
+                document.querySelector('#shortenedLinks').style.opacity = '0.5'
+            }
+        }
+        const createNewShortLink = () => {
+            previouslyShortened.push({
+                slug: 'wwos',
+                domain: 'www.sx.xom'
+            })
+            checkPreviouslyShortened()
+        }
+    </script>
 </body>
 
 </html>
