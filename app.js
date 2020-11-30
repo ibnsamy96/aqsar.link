@@ -45,8 +45,9 @@ function fetchLocalStorage() {
   if (linksArray) {
     // eslint-disable-next-line no-unused-vars
     previouslyShortened = [...linksArray]
+    updateShortenedLinksElement(generateLinkGroups(previouslyShortened))
+
   }
-  updateShortenedLinksElement(generateLinkGroups(previouslyShortened))
 }
 
 window.addEventListener('load', fetchLocalStorage)
@@ -128,6 +129,7 @@ window.createNewShortLink = () => {
   let randomSlug;
   const domain = link.value;
   if (validateURL(domain)) {
+    urlValidity.innerText = "";
     console.log("domain is valid!");
     generateSlug(5)
       .then((slug) => {
@@ -183,12 +185,18 @@ window.copyShortLink = (slug) => {
 window.createQR = (slug) => {
   const url = `https://${window.location.host}/${slug}`
   const qrImg = document.querySelector("#qrImg");
+  const downloadQRBtn = document.querySelector("#downloadQRImg");
   qrImg.setAttribute(
     "src",
     `https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100&color=DC143C&bgcolor=255-255-255`
   );
+  downloadQRBtn.setAttribute(
+    "href",
+    `https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100&color=DC143C&bgcolor=255-255-255`
+  );
   qrImg.className = '';
-  qrImg.style.display = "block";
+  qrImg.style.display = "inline-block";
+  downloadQRBtn.style.display = "inline-block";
   console.log(url);
   // const request = await fetch(
 

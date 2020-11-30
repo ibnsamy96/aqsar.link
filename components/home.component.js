@@ -38,7 +38,7 @@ export const HomeComponent = {
             <div id='qrBox'>
                 <i id='closeOverlay'></i>
                 <img src="" id="qrImg" />
-                <a id='downloadQRImg'></a>
+                <a id='downloadQRImg' style="display: none" class="btn btn-secondary" href="" download="qrCode.png">تحميل</a>
             </div>
         </section>
     </main>
