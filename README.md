@@ -22,4 +22,4 @@ Aqsar.Link doesn't require a special environment to be used in. The only need is
 `live-server --port=8080 --entry-file=./index.html`
 
 ## License
-I don't know what does this section mean but it seems cool to have one ib the readme file 🚶‍♂️
+I don't know what to write in here but it seems cool to have a licence section in the readme file 🚶‍♂️
