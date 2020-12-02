@@ -16,8 +16,8 @@ export const HomeComponent = {
                         <input class="form-control" placeholder="ضع الرابط الطويل" type="text" name="link" id="link"
                             required />
                     </div>
-                    <div class='col-auto p-0'>
-                        <input id='submitBTN' class="btn btn-block btn-primary" type="submit" value="قصّر الرابط" />
+                    <div class='col-2 p-0'>
+                        <button id='submitBTN' class="btn btn-block btn-primary" type="submit">قصّر الرابط</button>
                     </div>
                     <small class="form-text text-muted" id="urlValidity"></small>
                 </div>

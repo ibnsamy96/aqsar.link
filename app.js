@@ -112,6 +112,7 @@ let longLinkParagraph;
 let urlValidity;
 let copyBTN;
 let qrBTN;
+let submitBTN;
 
 function defineVariable() {
   link = document.querySelector("#link");
@@ -120,12 +121,23 @@ function defineVariable() {
   urlValidity = document.querySelector("#urlValidity");
   copyBTN = document.querySelector('button[onclick="copyShortLink()"]');
   qrBTN = document.querySelector('button[onclick="createQR()"]');
+  submitBTN = document.querySelector('#submitBTN')
+}
+
+function toggleForm(booleanValue) {
+  submitBTN.disabled = booleanValue;
+  link.disabled = booleanValue;
 }
 
 window.createNewShortLink = () => {
   if (!link) {
     defineVariable();
   }
+  console.log(submitBTN);
+  toggleForm(true)
+  submitBTN.innerHTML = LoadingComponent.render()
+  console.log(submitBTN);
+
   let randomSlug;
   const domain = link.value;
   if (validateURL(domain)) {
@@ -157,9 +169,16 @@ window.createNewShortLink = () => {
       .then(() => {
         // copyBTN.style.display = "inline";
         // qrBTN.style.display = "inline";
+        console.log(submitBTN);
+        toggleForm(false)
+        submitBTN.innerText = 'قصّر الرابط'
+
 
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // document.querySelector('#loader').innerHTML = ''
+        console.log(err)
+      });
   } else {
     console.log("invalid");
     urlValidity.innerText = "الرابط غير صالح، تأكد من وجود http:// أو https:// قبل الرابط";
