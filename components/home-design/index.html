@@ -41,12 +41,82 @@
             </section>
             <section class="row justify-content-center mt-5" id='shortenedLinks'>
                 <div class="col-md-6">
-                    <h2 id='shortenedLinksHeadline' class=""><span>آخر الروابط المقصرة</span></h2>
-                    <div class='linkGroup'>
-                        <p class="shortLink">https://aqsar.link/C99RO</p>
-                        <p class="longLink">https://www.youtube.com/watch?v=NqmMnjJ6GEg</p>
-                        <button class='copyBTN btn btn-secondary' onclick="copyShortLink()">Copy</button>
-                        <button class='qrBTN btn btn-secondary' onclick="createQR()">Create QR</button>
+                    <h2 id='shortenedLinksHeadline' class=""><span>آخر الروابط المُقصّرة</span></h2>
+                    <div class='row  m-0 p-0 linkGroup'>
+                        <button class=' col-lg-1 m-0 px-1 copyBTN btn btn-secondary' onclick="copyShortLink()"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+                                <g id="copy-icon" transform="translate(-552 -652)">
+                                    <g id="Rectangle_4" data-name="Rectangle 4" class="copy-cls-1"
+                                        transform="translate(561 652)">
+                                        <rect class="copy-cls-2" width="17" height="21" rx="6" />
+                                        <rect class="copy-cls-3" x="1" y="1" width="15" height="19" rx="5" />
+                                    </g>
+                                    <g id="Rectangle_5" data-name="Rectangle 5" class="copy-cls-1"
+                                        transform="translate(552 657)">
+                                        <rect class="copy-cls-2" width="17" height="21" rx="6" />
+                                        <rect class="copy-cls-3" x="1" y="1" width="15" height="19" rx="5" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </button>
+                        <button class='col-lg-1 m-0 px-1  qrBTN btn btn-secondary' onclick="createQR()"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+                                <g id="qr-icon" transform="translate(-683 -679)">
+                                    <g id="Group_2" data-name="Group 2" transform="translate(0 -53)">
+                                        <g id="Rectangle_6" data-name="Rectangle 6" class="qr-cls-1"
+                                            transform="translate(683 732)">
+                                            <rect class="qr-cls-5" width="26" height="26" rx="6" />
+                                            <rect class="qr-cls-6" x="1" y="1" width="24" height="24" rx="5" />
+                                        </g>
+                                        <rect id="Rectangle_7" data-name="Rectangle 7" class="qr-cls-2" width="26"
+                                            height="9" transform="translate(683 741)" />
+                                        <rect id="Rectangle_8" data-name="Rectangle 8" class="qr-cls-2" width="26"
+                                            height="9" transform="translate(700.5 732) rotate(90)" />
+                                    </g>
+                                    <g id="Rectangle_9" data-name="Rectangle 9" class="qr-cls-3"
+                                        transform="translate(688 684)">
+                                        <rect class="qr-cls-5" width="6" height="6" rx="1" />
+                                        <rect class="qr-cls-6" x="0.5" y="0.5" width="5" height="5" rx="0.5" />
+                                    </g>
+                                    <g id="Rectangle_10" data-name="Rectangle 10" class="qr-cls-3"
+                                        transform="translate(699 684)">
+                                        <rect class="qr-cls-5" width="6" height="6" rx="1" />
+                                        <rect class="qr-cls-6" x="0.5" y="0.5" width="5" height="5" rx="0.5" />
+                                    </g>
+                                    <g id="Rectangle_11" data-name="Rectangle 11" class="qr-cls-3"
+                                        transform="translate(688 695)">
+                                        <rect class="qr-cls-5" width="6" height="6" rx="1" />
+                                        <rect class="qr-cls-6" x="0.5" y="0.5" width="5" height="5" rx="0.5" />
+                                    </g>
+                                    <g id="Rectangle_12" data-name="Rectangle 12" class="qr-cls-4"
+                                        transform="translate(699 695)">
+                                        <rect class="qr-cls-5" width="3" height="3" rx="1" />
+                                        <rect class="qr-cls-6" x="0.25" y="0.25" width="2.5" height="2.5" rx="0.75" />
+                                    </g>
+                                    <g id="Rectangle_15" data-name="Rectangle 15" class="qr-cls-4"
+                                        transform="translate(699 698)">
+                                        <rect class="qr-cls-5" width="3" height="3" rx="1" />
+                                        <rect class="qr-cls-6" x="0.25" y="0.25" width="2.5" height="2.5" rx="0.75" />
+                                    </g>
+                                    <g id="Rectangle_13" data-name="Rectangle 13" class="qr-cls-4"
+                                        transform="translate(702 695)">
+                                        <rect class="qr-cls-5" width="3" height="3" rx="1" />
+                                        <rect class="qr-cls-6" x="0.25" y="0.25" width="2.5" height="2.5" rx="0.75" />
+                                    </g>
+                                    <g id="Rectangle_14" data-name="Rectangle 14" class="qr-cls-4"
+                                        transform="translate(702 698)">
+                                        <rect class="qr-cls-5" width="3" height="3" rx="1" />
+                                        <rect class="qr-cls-6" x="0.25" y="0.25" width="2.5" height="2.5" rx="0.75" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </button>
+                        <div class="col-lg-auto m-0 px-1">
+                            <p class="m-0 p-0  shortLink">https://aqsar.link/C99RO</p>
+                        </div>
+                        <div class="col-lg m-0 px-1 ">
+                            <p class="m-0 p-0 longLink">https://www.youtube.com/watch?v=NqmMnjJ6GEg</p>
+                        </div>
                     </div>
                 </div>
             </section>
