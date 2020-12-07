@@ -203,19 +203,18 @@ function defineVariable() {
   submitBTN = document.querySelector('#submitBTN')
 }
 
-function toggleForm(booleanValue) {
+function disableForm(booleanValue) {
   submitBTN.disabled = booleanValue;
   link.disabled = booleanValue;
+  submitBTN.innerHTML = booleanValue ? LoadingComponent.render() : submitBTN.innerText = 'قصّر الرابط'
+
 }
 
 window.createNewShortLink = () => {
   if (!link) {
     defineVariable();
   }
-  console.log(submitBTN);
-  toggleForm(true)
-  submitBTN.innerHTML = LoadingComponent.render()
-  console.log(submitBTN);
+  disableForm(true)
 
   let randomSlug;
   const domain = link.value;
@@ -249,17 +248,18 @@ window.createNewShortLink = () => {
         // copyBTN.style.display = "inline";
         // qrBTN.style.display = "inline";
         console.log(submitBTN);
-        toggleForm(false)
-        submitBTN.innerText = 'قصّر الرابط'
+        disableForm(false)
 
 
       })
       .catch((err) => {
+        // TODO show error msg
         // document.querySelector('#loader').innerHTML = ''
         console.log(err)
       });
   } else {
     console.log("invalid");
+    disableForm(false)
     urlValidity.innerText = "الرابط غير صالح، تأكد من وجود http:// أو https:// قبل الرابط";
   }
 };
