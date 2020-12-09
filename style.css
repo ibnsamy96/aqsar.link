@@ -38,6 +38,15 @@ input {
     border-radius: 10px !important;
 }
 
+
+input:focus,
+input:active {
+    /* background-color: #BB0A1E !important; */
+    /* border: none !important; */
+    /* box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2) !important; */
+    /* color: white; */
+}
+
 .btn-primary,
 .btn-primary:visited,
 .btn-primary:focus,
@@ -141,6 +150,7 @@ input:-internal-autofill-selected {
     /* height: 3.8rem !important; */
     background-color: white;
     color: #bb0a1e;
+    /* box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2) !important; */
     overflow: auto;
     text-align: left;
     border-radius: 7px;
