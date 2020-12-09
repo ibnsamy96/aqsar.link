@@ -163,6 +163,8 @@ input:-internal-autofill-selected {
     /* justify-content: center; */
     align-items: center;
     display: flex;
+    flex-direction: inherit;
+    /* flex-flow: wrap; */
     min-width: 0 !important;
     /* flex-wrap: wrap; */
 
@@ -177,7 +179,7 @@ input:-internal-autofill-selected {
 .longLink {
     /* width: auto; */
     font-weight: 300;
-    opacity: 90%;
+    opacity: 50%;
     /* line-break: auto; */
     text-overflow: ellipsis;
     overflow: hidden;
@@ -252,16 +254,41 @@ input:-internal-autofill-selected {
     .primaryText {
         font-size: 8.7rem;
     }
+
+    .longLink::before {
+        content: '';
+    }
+
+    .linkGroup div {
+        min-height: 1.8rem;
+        /* padding-bottom: 6px; */
+    }
+
+    .linkGroup .row {
+        flex-direction: row-reverse;
+        /* flex-flow: column-reverse; */
+        /* justify-content: center; */
+    }
+
+    .linkGroup {
+        /* flex-direction: row-reverse; */
+        flex-flow: column-reverse;
+        overflow: hidden;
+        /* justify-content: center; */
+        /* justify-content: left !important; */
+        /* align-items: center; */
+    }
+
+    .btn-secondary {
+        padding: 10px 0 !important;
+    }
+
 }
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (max-width: 769px) {
     .primaryText {
         font-size: 7.5rem;
-    }
-
-    .longLink::before {
-        content: '';
     }
 }
 

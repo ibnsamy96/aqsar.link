@@ -24,14 +24,7 @@ export const HomeComponent = {
             </form>
         </section>
         <section class="row justify-content-center mt-5" id='shortenedLinks'>
-            <div class="col-md-6">
-                <!-- <h2 id='shortenedLinksHeadline' class=""><span>آخر الروابط المقصرة</span></h2>
-                <div class='linkGroup'>
-                    <p class="shortLink"></p>
-                    <p class="longLink"></p>
-                    <button class='copyBTN btn btn-secondary' onclick="copyShortLink()">Copy</button>
-                    <button class='qrBTN btn btn-secondary' onclick="createQR()">Create QR</button>
-                </div> -->
+            <div class="col-md-8 col-lg-6">
             </div>
         </section>
         <section id='qrCodeOverlay'>
