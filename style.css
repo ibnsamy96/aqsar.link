@@ -10,7 +10,7 @@ body {
     z-index: -1;
 }
 
-.copyBadge {
+#copyBadge {
     border-radius: 10px;
     color: red;
     background-color: white;
