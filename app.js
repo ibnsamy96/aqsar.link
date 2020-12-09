@@ -44,6 +44,17 @@ function generateLinkGroups(shortenedLinks) {
 
 }
 
+function changeBadge() {
+  console.log('ho');
+  const x = document.getElementById('copyBadge')
+  console.log(x);
+  x.style.opacity = '0.9';
+  setTimeout(() => {
+    document.getElementById('copyBadge').style.opacity = '0';
+  }, 2000)
+}
+
+
 function updateShortenedLinksElement(shortenedLinksHTMLCode) {
   document.querySelector('#shortenedLinks .col-md-6').innerHTML = shortenedLinksHTMLCode;
 }
@@ -205,7 +216,8 @@ window.copyShortLink = (slug) => {
     console.warn("Copy to clipboard failed.", error);
   }
   document.body.removeChild(temporaryInput);
-};
+  changeBadge()
+}
 
 // create QR code for links
 

@@ -10,6 +10,19 @@ body {
     z-index: -1;
 }
 
+.copyBadge {
+    border-radius: 10px;
+    color: red;
+    background-color: white;
+    opacity: 0;
+    padding: 10px 20px;
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 800ms ease-in-out;
+}
+
 
 .primaryText {
     font-family: 'Aref Ruqaa', serif;

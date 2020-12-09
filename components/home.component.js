@@ -34,6 +34,8 @@ export const HomeComponent = {
                 <a id='downloadQRImg' style="display: none" class="btn btn-secondary" href="" download="qrCode.png">تحميل</a>
             </div>
         </section>
+        <div id='copyBadge'>تم النسخ</div>
+
     </main>
 
     `;

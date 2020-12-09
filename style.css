@@ -10,6 +10,19 @@ body {
     z-index: -1;
 }
 
+.copyBadge {
+    border-radius: 10px;
+    color: red;
+    background-color: white;
+    opacity: 0;
+    padding: 10px 20px;
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 800ms ease-in-out;
+}
+
 
 .primaryText {
     font-family: 'Aref Ruqaa', serif;
@@ -36,15 +49,6 @@ input {
 .btn {
     height: 100%;
     border-radius: 10px !important;
-}
-
-
-input:focus,
-input:active {
-    /* background-color: #BB0A1E !important; */
-    /* border: none !important; */
-    /* box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2) !important; */
-    /* color: white; */
 }
 
 .btn-primary,
@@ -150,7 +154,6 @@ input:-internal-autofill-selected {
     /* height: 3.8rem !important; */
     background-color: white;
     color: #bb0a1e;
-    /* box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2) !important; */
     overflow: auto;
     text-align: left;
     border-radius: 7px;
@@ -173,7 +176,7 @@ input:-internal-autofill-selected {
     /* justify-content: center; */
     align-items: center;
     display: flex;
-    /* flex-direction: inherit; */
+    flex-direction: inherit;
     /* flex-flow: wrap; */
     min-width: 0 !important;
     /* flex-wrap: wrap; */
@@ -269,10 +272,9 @@ input:-internal-autofill-selected {
         content: '';
     }
 
-    .linkGroup .linksDiv {
+    .linkGroup div {
         min-height: 1.8rem;
         /* padding-bottom: 6px; */
-        padding-left: 10px !important;
     }
 
     .linkGroup .row {
@@ -285,7 +287,6 @@ input:-internal-autofill-selected {
         /* flex-direction: row-reverse; */
         flex-flow: column-reverse;
         overflow: hidden;
-        padding-top: 5px !important;
         /* justify-content: center; */
         /* justify-content: left !important; */
         /* align-items: center; */
