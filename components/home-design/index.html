@@ -40,15 +40,17 @@
                 </form>
             </section>
             <section class="row justify-content-center mt-5" id='shortenedLinks'>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <h2 id='shortenedLinksHeadline' class=""><span>آخر الروابط المُقصّرة</span></h2>
                     <div class='row  m-0 p-0 linkGroup'>
-                        <button class=' col-6 col-lg-1 m-0 px-1 copyBTN btn btn-secondary' onclick="copyShortLink()">
-                            <img src="copy.svg" alt="copy">
-                        </button>
-                        <button class='col-6 col-lg-1 m-0 px-1  qrBTN btn btn-secondary' onclick="createQR()">
-                            <img src="qr.svg" alt="qr">
-                        </button>
+                        <div class="row col-lg-2 m-0 p-0">
+                            <button class=' col-6  m-0 px-1 copyBTN btn btn-secondary' onclick="copyShortLink()">
+                                <img src="copy.svg" alt="copy">
+                            </button>
+                            <button class='col-6 m-0 px-1  qrBTN btn btn-secondary' onclick="createQR()">
+                                <img src="qr.svg" alt="qr">
+                            </button>
+                        </div>
                         <div class="col-lg-auto m-0 px-1">
                             <p class="m-0 p-0  shortLink">https://aqsar.link/C99RO</p>
                         </div>
