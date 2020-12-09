@@ -12,6 +12,7 @@ export const HomeComponent = {
         <section id='formSection'>
             <form action="javascript:;" onsubmit="createNewShortLink()">
                 <div class="form-row justify-content-center">
+                
                     <div class='col-9 col-sm-8 col-md-6 col-lg-5  p-0'>
                         <input class="form-control" placeholder="ضع الرابط الطويل" type="text" name="link" id="link"
                             required />
@@ -19,7 +20,9 @@ export const HomeComponent = {
                     <div class='col-2 p-0'>
                         <button id='submitBTN' class="btn btn-block btn-primary" type="submit">قصّر الرابط</button>
                     </div>
-                    <small class="form-text text-muted" id="urlValidity"></small>
+                    <div class='col-12'>
+                    <p class="form-text text-muted small font-weight-bold" style='color:white !important' id="urlValidity"></p>
+                    </div>
                 </div>
             </form>
         </section>
@@ -34,6 +37,7 @@ export const HomeComponent = {
                 <a id='downloadQRImg' style="display: none" class="btn btn-secondary" href="" download="qrCode.png">تحميل</a>
             </div>
         </section>
+        <div id='copyBadge'>تم النسخ</div>
 
     </main>
 
