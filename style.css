@@ -12,7 +12,7 @@ body {
 
 #copyBadge {
     border-radius: 10px;
-    color: red;
+    color: #BB0A1E;
     background-color: white;
     opacity: 0;
     padding: 10px 20px;
@@ -20,7 +20,7 @@ body {
     top: 5%;
     left: 50%;
     transform: translateX(-50%);
-    transition: all 800ms ease-in-out;
+    transition: all 400ms ease-in-out;
 }
 
 
@@ -29,6 +29,23 @@ body {
     font-size: 10rem;
     /* font-size: 15vw; */
     /* margin-top: -6rem !important; */
+}
+
+.no-select {
+    cursor: default;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 #app {
@@ -74,7 +91,7 @@ input {
     border-radius: 0px !important;
 }
 
-.btn-secondary:active {
+.btn-secondary:hover {
     background-color: rgba(220, 20, 60, 0.3) !important;
     /* border: none !important;
     box-shadow: none !important;
