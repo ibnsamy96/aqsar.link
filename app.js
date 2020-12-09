@@ -194,8 +194,9 @@ window.createNewShortLink = () => {
       })
       .catch((err) => {
         // TODO show error msg
-        // document.querySelector('#loader').innerHTML = ''
-        console.log(err)
+        console.error(err)
+        disableForm(false)
+        urlValidity.innerText = "تأكد من الاتصال بشبكة انترنت صالحة";
       });
   } else {
     console.log("invalid");
