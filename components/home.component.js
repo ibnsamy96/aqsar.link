@@ -43,7 +43,7 @@ export const HomeComponent = {
         return [{
                 'operation': 'editInnerText',
                 'querySelector': 'title',
-                'newText': 'Aqsar Link | Home'
+                'newText': 'أقصر لينك | الرئيسية'
             },
             {
                 'operation': 'editAttribute',
