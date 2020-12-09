@@ -173,7 +173,7 @@ input:-internal-autofill-selected {
     /* justify-content: center; */
     align-items: center;
     display: flex;
-    flex-direction: inherit;
+    /* flex-direction: inherit; */
     /* flex-flow: wrap; */
     min-width: 0 !important;
     /* flex-wrap: wrap; */
@@ -269,9 +269,10 @@ input:-internal-autofill-selected {
         content: '';
     }
 
-    .linkGroup div {
+    .linkGroup .linksDiv {
         min-height: 1.8rem;
         /* padding-bottom: 6px; */
+        padding-left: 10px !important;
     }
 
     .linkGroup .row {
@@ -284,6 +285,7 @@ input:-internal-autofill-selected {
         /* flex-direction: row-reverse; */
         flex-flow: column-reverse;
         overflow: hidden;
+        padding-top: 5px !important;
         /* justify-content: center; */
         /* justify-content: left !important; */
         /* align-items: center; */

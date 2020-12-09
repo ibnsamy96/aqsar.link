@@ -30,10 +30,10 @@ function generateLinkGroups(shortenedLinks) {
     <button class='col-6 m-0 px-1  qrBTN btn btn-secondary'
         onclick="createQR('${link.slug}')"><img src="./assets/svg/qr.svg" alt="qr"></button>
         </div>
-    <div class="col-lg-auto m-0 px-1">
+    <div class="col-lg-auto m-0 px-1 linksDiv">
         <p class="m-0 p-0  shortLink">https://${window.location.host}/${link.slug}</p>
     </div>
-    <div class="col-lg m-0 px-1 ">
+    <div class="col-lg m-0 px-1 linksDiv">
         <p class="m-0 p-0 longLink">${link.domain}</p>
     </div>
 </div>`
