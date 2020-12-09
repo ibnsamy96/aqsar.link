@@ -19,16 +19,17 @@ function getFromLocalStorage() {
   return JSON.parse(localStorage.getItem('linksArray'))
 }
 
-
 function generateLinkGroups(shortenedLinks) {
   let shortenedLinksHTMLCode = ``
 
   shortenedLinks.forEach(link => {
     const linkGroupHTML = `<div class='row  m-0 p-0 linkGroup'>
-    <button class=' col-lg-1 m-0 px-1 copyBTN btn btn-secondary'
-        onclick="copyShortLink('${link.slug}')"> ${getSvgCopy()} </button>
-    <button class='col-lg-1 m-0 px-1  qrBTN btn btn-secondary'
-        onclick="createQR('${link.slug}')">${getSvgQr()} </button>
+    <div class="row col-lg-2 m-0 p-0">
+    <button class='col-6 m-0 px-1 copyBTN btn btn-secondary'
+        onclick="copyShortLink('${link.slug}')"><img src="copy.svg" alt="copy"></button>
+    <button class='col-6 m-0 px-1  qrBTN btn btn-secondary'
+        onclick="createQR('${link.slug}')"><img src="qr.svg" alt="qr"></button>
+        </div>
     <div class="col-lg-auto m-0 px-1">
         <p class="m-0 p-0  shortLink">https://${window.location.host}/${link.slug}</p>
     </div>
@@ -39,7 +40,7 @@ function generateLinkGroups(shortenedLinks) {
     shortenedLinksHTMLCode = `${linkGroupHTML} ${shortenedLinksHTMLCode}`
   });
 
-  return `<h2 id='shortenedLinksHeadline' class=""><span>آخر الروابط المقصرة</span></h2> ${shortenedLinksHTMLCode}`
+  return `<h2 id='shortenedLinksHeadline' class=""><span>آخر الروابط المُقصّرة</span></h2> ${shortenedLinksHTMLCode}`
 
 }
 
