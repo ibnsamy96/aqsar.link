@@ -6,7 +6,7 @@ export const HomeComponent = {
         <main class='col my-auto'>
         <div class="row mb-5">
             <div class="col-12">
-                <h1 id='' class="primaryText">أقصر لينك</h1>
+                <h1 id='' class="primaryText no-select">أقصر لينك</h1>
             </div>
         </div>
         <section id='formSection'>
