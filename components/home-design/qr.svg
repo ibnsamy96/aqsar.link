@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+  <g id="qr-icon" transform="translate(-683 -679)">
+    <g id="Group_2" data-name="Group 2" transform="translate(0 -53)">
+      <g id="Rectangle_6" data-name="Rectangle 6" transform="translate(683 732)" fill="#fff" stroke="#bb0a1e" stroke-width="2">
+        <rect width="26" height="26" rx="6" stroke="none"/>
+        <rect x="1" y="1" width="24" height="24" rx="5" fill="none"/>
+      </g>
+      <rect id="Rectangle_7" data-name="Rectangle 7" width="26" height="9" transform="translate(683 741)" fill="#fff"/>
+      <rect id="Rectangle_8" data-name="Rectangle 8" width="26" height="9" transform="translate(700.5 732) rotate(90)" fill="#fff"/>
+    </g>
+    <g id="Rectangle_9" data-name="Rectangle 9" transform="translate(688 684)" fill="#fff" stroke="#bb0a1e" stroke-width="1">
+      <rect width="6" height="6" rx="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="5" height="5" rx="0.5" fill="none"/>
+    </g>
+    <g id="Rectangle_10" data-name="Rectangle 10" transform="translate(699 684)" fill="#fff" stroke="#bb0a1e" stroke-width="1">
+      <rect width="6" height="6" rx="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="5" height="5" rx="0.5" fill="none"/>
+    </g>
+    <g id="Rectangle_11" data-name="Rectangle 11" transform="translate(688 695)" fill="#fff" stroke="#bb0a1e" stroke-width="1">
+      <rect width="6" height="6" rx="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="5" height="5" rx="0.5" fill="none"/>
+    </g>
+    <g id="Rectangle_12" data-name="Rectangle 12" transform="translate(699 695)" fill="#fff" stroke="#bb0a1e" stroke-width="0.5">
+      <rect width="3" height="3" rx="1" stroke="none"/>
+      <rect x="0.25" y="0.25" width="2.5" height="2.5" rx="0.75" fill="none"/>
+    </g>
+    <g id="Rectangle_15" data-name="Rectangle 15" transform="translate(699 698)" fill="#fff" stroke="#bb0a1e" stroke-width="0.5">
+      <rect width="3" height="3" rx="1" stroke="none"/>
+      <rect x="0.25" y="0.25" width="2.5" height="2.5" rx="0.75" fill="none"/>
+    </g>
+    <g id="Rectangle_13" data-name="Rectangle 13" transform="translate(702 695)" fill="#fff" stroke="#bb0a1e" stroke-width="0.5">
+      <rect width="3" height="3" rx="1" stroke="none"/>
+      <rect x="0.25" y="0.25" width="2.5" height="2.5" rx="0.75" fill="none"/>
+    </g>
+    <g id="Rectangle_14" data-name="Rectangle 14" transform="translate(702 698)" fill="#fff" stroke="#bb0a1e" stroke-width="0.5">
+      <rect width="3" height="3" rx="1" stroke="none"/>
+      <rect x="0.25" y="0.25" width="2.5" height="2.5" rx="0.75" fill="none"/>
+    </g>
+  </g>
+</svg>
