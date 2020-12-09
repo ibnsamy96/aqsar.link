@@ -193,7 +193,7 @@ input:-internal-autofill-selected {
     /* justify-content: center; */
     align-items: center;
     display: flex;
-    flex-direction: inherit;
+    /* flex-direction: inherit; */
     /* flex-flow: wrap; */
     min-width: 0 !important;
     /* flex-wrap: wrap; */
@@ -302,11 +302,17 @@ input:-internal-autofill-selected {
 
     .linkGroup {
         /* flex-direction: row-reverse; */
+        padding-top: 6px !important;
         flex-flow: column-reverse;
         overflow: hidden;
         /* justify-content: center; */
         /* justify-content: left !important; */
         /* align-items: center; */
+    }
+
+    .linksDiv {
+        padding-right: 8px !important;
+        padding-left: 8px !important;
     }
 
     .btn-secondary {
