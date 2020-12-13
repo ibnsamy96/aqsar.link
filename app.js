@@ -296,6 +296,7 @@ window.toggleQrCodeOverlay = (slug = undefined) => {
         );
 
       }).catch(error => {
+        console.error(error)
         qrBox.innerHTML = disableQR(false);
       })
   } else {
