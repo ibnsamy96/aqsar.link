@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/prefer-default-export
 export const LoadingComponent = {
-  render: () => {
+  render: (color = 'white') => {
     return `
-  <div class="spinner-border text-light"></div>
+  <div class="spinner-border text-${color}"></div>
 
   `;
   },

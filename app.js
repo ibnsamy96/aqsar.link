@@ -146,7 +146,7 @@ function defineVariable() {
 function disableForm(booleanValue) {
   submitBTN.disabled = booleanValue;
   link.disabled = booleanValue;
-  submitBTN.innerHTML = booleanValue ? LoadingComponent.render() : submitBTN.innerText = 'قصّر الرابط'
+  submitBTN.innerHTML = booleanValue ? LoadingComponent.render('primary-text-color') : 'قصّر الرابط'
 
 }
 
@@ -222,18 +222,13 @@ window.copyShortLink = (slug) => {
 
 // create QR code for links
 
-const createQR = (slug) => {
+const fetchQR = async (slug) => {
   const url = `https://${window.location.host}/${slug}`
-  const qrImg = document.querySelector("#qrImg");
-  const downloadQRBtn = document.querySelector("#downloadQRImg");
-  qrImg.setAttribute(
-    "src",
-    `https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100&color=DC143C&bgcolor=255-255-255`
-  );
-  downloadQRBtn.setAttribute(
-    "href",
-    `https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100&color=DC143C&bgcolor=255-255-255`
-  );
+
+  const response = await fetch(`https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=200x200&color=DC143C&bgcolor=255-255-255`);
+  const imgBlob = await response.blob();
+  return URL.createObjectURL(imgBlob);
+
   // qrImg.className = '';
   // qrImg.style.display = "inline-block";
   // downloadQRBtn.style.display = "inline-block";
@@ -244,6 +239,12 @@ const createQR = (slug) => {
   // console.log(response.json);
 };
 
+function disableQR(booleanValue) {
+  // submitBTN.disabled = booleanValue;
+  // link.disabled = booleanValue;
+  return booleanValue ? LoadingComponent.render('secondary-text-color') : 'حدثت مشكلة أثناء استخراج الكود!';
+
+}
 
 window.toggleQrCodeOverlay = (slug = undefined) => {
 
@@ -257,24 +258,46 @@ window.toggleQrCodeOverlay = (slug = undefined) => {
     // create
     qrCodeOverlay = document.createElement('section')
     qrCodeOverlay.setAttribute('id', 'qrCodeOverlay')
-    qrCodeOverlay.innerHTML = `
-   
-    <div id='qrBox'>
-    <div id='closeOverlay' class="pl-2 pt-2"> <img src="../../assets/svg/close.svg" onClick='toggleQrCodeOverlay()'   width="16px"
-            alt="close">
-    </div>
-    <div id="qrImg" class='d-block mt-2'><img
-            src="https://api.qrserver.com/v1/create-qr-code/?data=https://aqsar.link/XzVhI&size=100x100&color=DC143C&bgcolor=255-255-255" />
-    </div>
-    <div id='downloadQRImg' class='d-block mt-2'>
-        <a href="" class="btn btn-secondary py-2" download="qrCode.png"> <img
-                src="../../assets/svg/download.svg" width="16px" alt="download" /> تحميل</a>
-    </div>
-    </div>
-   
-   `
+    const qrBox = document.createElement('div')
+    qrBox.setAttribute('id', 'qrBox')
+    qrBox.innerHTML = disableQR(true);
+    // qrBox.style.backgroundColor = '#BB0A1E'
+    qrCodeOverlay.appendChild(qrBox)
+
     document.querySelector('main').appendChild(qrCodeOverlay)
-    createQR(slug)
+    fetchQR(slug)
+      .then(url => {
+        qrBox.innerHTML = `
+   
+      <div id='closeOverlay' class="pl-2 pt-2"> <img src="../../assets/svg/close.svg" onClick='toggleQrCodeOverlay()'   width="16px"
+              alt="close">
+      </div>
+      <div id="qrImg" class='d-block mt-2'><img
+              src="" />
+      </div>
+      <div id='downloadQRImg' class='d-block mt-2'>
+          <a href="" class="btn btn-secondary py-2" download="qrCode.png"> <img
+                  src="../../assets/svg/download.svg" width="16px" alt="download" /> تحميل</a>
+      </div>
+     
+     `
+        return url
+      })
+      .then(url => {
+        const qrImg = document.querySelector("#qrImg img");
+        const downloadQRBtn = document.querySelector("#downloadQRImg a");
+        qrImg.setAttribute(
+          "src",
+          url
+        );
+        downloadQRBtn.setAttribute(
+          "href",
+          url
+        );
+
+      }).catch(error => {
+        qrBox.innerHTML = disableQR(false);
+      })
   } else {
     // remove
     console.log(qrCodeOverlay);

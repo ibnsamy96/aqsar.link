@@ -31,6 +31,14 @@ body {
     /* margin-top: -6rem !important; */
 }
 
+.primary-text-color {
+    color: white;
+}
+
+.secondary-text-color {
+    color: #BB0A1E;
+}
+
 .no-select {
     cursor: default;
     -webkit-touch-callout: none;
@@ -284,6 +292,8 @@ input:-internal-autofill-selected {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
     color: #BB0A1E;
+    /* transition: all 500ms ease-in-out; */
+
 }
 
 #qrBox {
@@ -298,6 +308,7 @@ input:-internal-autofill-selected {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
+    /* transition: all 500ms ease-in-out; */
 }
 
 #downloadQRImg a {
