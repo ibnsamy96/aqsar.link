@@ -44,16 +44,17 @@ function generateLinkGroups(shortenedLinks) {
 
 }
 
-function changeBadge() {
+function showNotification(notificationMessage) {
   console.log('ho');
-  const copyBadge = document.getElementById('copyBadge')
+  const notification = document.getElementById('notification')
+  notification.innerText = notificationMessage;
   // console.log(x);
-  copyBadge.style.opacity = '0.9';
-  copyBadge.style.top = '5%'
+  notification.style.opacity = '0.9';
+  notification.style.top = '5%'
   setTimeout(() => {
-    copyBadge.style.opacity = '0';
+    notification.style.opacity = '0';
     setTimeout(() => {
-      copyBadge.style.top = '7%';
+      notification.style.top = '7%';
     }, 80)
   }, 2000)
 
@@ -222,7 +223,7 @@ window.copyShortLink = (slug) => {
     console.warn("Copy to clipboard failed.", error);
   }
   document.body.removeChild(temporaryInput);
-  changeBadge()
+  showNotification('تم النسخ')
 }
 
 // create QR code for links
@@ -244,10 +245,10 @@ const fetchQR = async (slug) => {
   // console.log(response.json);
 };
 
-function disableQR(booleanValue) {
+function loadingQR() {
   // submitBTN.disabled = booleanValue;
   // link.disabled = booleanValue;
-  return booleanValue ? LoadingComponent.render('secondary-text-color') : 'حدثت مشكلة أثناء استخراج الكود!';
+  return LoadingComponent.render('secondary-text-color');
 
 }
 
@@ -265,13 +266,16 @@ window.toggleQrCodeOverlay = (slug = undefined) => {
     qrCodeOverlay.setAttribute('id', 'qrCodeOverlay')
     const qrBox = document.createElement('div')
     qrBox.setAttribute('id', 'qrBox')
-    qrBox.innerHTML = disableQR(true);
+    qrBox.innerHTML = loadingQR();
     // qrBox.style.backgroundColor = '#BB0A1E'
+    qrBox.classList.add('p-3')
     qrCodeOverlay.appendChild(qrBox)
 
     document.querySelector('main').appendChild(qrCodeOverlay)
     fetchQR(slug)
       .then(url => {
+        qrBox.style.minWidth = '300px';
+        qrBox.classList.remove('p-3')
         qrBox.innerHTML = `
    
       <div id='closeOverlay' class="pl-2 pt-2"> <img src="../../assets/svg/close.svg" onClick='toggleQrCodeOverlay()'   width="16px"
@@ -302,7 +306,9 @@ window.toggleQrCodeOverlay = (slug = undefined) => {
 
       }).catch(error => {
         console.error(error)
-        qrBox.innerHTML = disableQR(false);
+        // qrBox.innerHTML = loadingQR(false);
+        qrCodeOverlay.remove()
+        showNotification('حدثت مشكلة أثناء استخراج الكود!')
       })
   } else {
     // remove

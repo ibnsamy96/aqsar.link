@@ -26,12 +26,12 @@ export const HomeComponent = {
                 </div>
             </form>
         </section>
-        <section class="row justify-content-center mt-5" id='shortenedLinks'>
+        <section class="row justify-content-center mt-5 mb-4" id='shortenedLinks'>
             <div class="col-md-8 col-lg-6">
             </div>
         </section>
 
-        <div id='copyBadge'>تم النسخ</div>
+        <div id='notification'></div>
 
     </main>
 

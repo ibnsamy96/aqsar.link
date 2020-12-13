@@ -10,14 +10,14 @@ body {
     z-index: -1;
 }
 
-#copyBadge {
+#notification {
     border-radius: 10px;
     color: #BB0A1E;
     background-color: white;
     opacity: 0;
     padding: 10px 20px;
     position: fixed;
-    top: 5%;
+    top: 7%;
     left: 50%;
     transform: translateX(-50%);
     transition: all 400ms ease-in-out;
@@ -29,6 +29,14 @@ body {
     font-size: 10rem;
     /* font-size: 15vw; */
     /* margin-top: -6rem !important; */
+}
+
+.primary-text-color {
+    color: white;
+}
+
+.secondary-text-color {
+    color: #BB0A1E;
 }
 
 .no-select {
@@ -284,11 +292,13 @@ input:-internal-autofill-selected {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
     color: #BB0A1E;
+    /* transition: all 500ms ease-in-out; */
+
 }
 
 #qrBox {
     background-color: white;
-    min-width: 300px;
+    /* min-width: 300px; */
     width: fit-content;
     /* max-width: 100vw; */
     /* min-height: 300px; */
@@ -298,6 +308,7 @@ input:-internal-autofill-selected {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
+    /* transition: all 500ms ease-in-out; */
 }
 
 #downloadQRImg a {
