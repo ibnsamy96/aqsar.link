@@ -28,7 +28,7 @@ function generateLinkGroups(shortenedLinks) {
     <button class='col-6 m-0 px-1 copyBTN btn btn-secondary'
         onclick="copyShortLink('${link.slug}')"><img src="./assets/svg/copy.svg" alt="copy"></button>
     <button class='col-6 m-0 px-1  qrBTN btn btn-secondary'
-        onclick="toggleQrCodeOverlay('${link.slug}')"><img src="./assets/svg/qr.svg" alt="qr"></button>
+        onclick="toggleQrCodeOverlay(this,'${link.slug}')"><img src="./assets/svg/qr.svg" alt="qr"></button>
         </div>
     <div class="col-lg-auto m-0 px-1 linksDiv">
         <p class="m-0 p-0  shortLink">https://${window.location.host}/${link.slug}</p>
@@ -253,9 +253,9 @@ function loadingQR() {
 
 }
 
-window.toggleQrCodeOverlay = (slug = undefined) => {
+window.toggleQrCodeOverlay = (element, slug = undefined) => {
 
-  console.log('in toggle');
+  // console.log(element.target.id);
 
   // const qrCodeOverlay = document.createElement('section')
 
@@ -265,6 +265,7 @@ window.toggleQrCodeOverlay = (slug = undefined) => {
     // create
     qrCodeOverlay = document.createElement('section')
     qrCodeOverlay.setAttribute('id', 'qrCodeOverlay')
+    qrCodeOverlay.setAttribute('onClick', 'toggleQrCodeOverlay(event)')
     const qrBox = document.createElement('div')
     qrBox.setAttribute('id', 'qrBox')
     qrBox.innerHTML = loadingQR();
@@ -279,7 +280,7 @@ window.toggleQrCodeOverlay = (slug = undefined) => {
         qrBox.classList.remove('p-3')
         qrBox.innerHTML = `
    
-      <div id='closeOverlay' class="pl-2 pt-2"> <img src="../../assets/svg/close.svg" onClick='toggleQrCodeOverlay()'   width="16px"
+      <div   id='closeOverlay' class="pl-2 pt-2"> <img id='closeImg' src="../../assets/svg/close.svg" onClick='toggleQrCodeOverlay(event)'   width="16px"
               alt="close">
       </div>
       <div id="qrImg" class='d-block mt-2'><img
@@ -311,7 +312,7 @@ window.toggleQrCodeOverlay = (slug = undefined) => {
         qrCodeOverlay.remove()
         showNotification('حدثت مشكلة أثناء استخراج الكود!')
       })
-  } else {
+  } else if (element.target.id === 'closeImg' || element.target.id === 'qrCodeOverlay') {
     // remove
     console.log(qrCodeOverlay);
 
