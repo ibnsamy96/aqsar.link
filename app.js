@@ -46,12 +46,17 @@ function generateLinkGroups(shortenedLinks) {
 
 function changeBadge() {
   console.log('ho');
-  const x = document.getElementById('copyBadge')
-  console.log(x);
-  x.style.opacity = '0.9';
+  const copyBadge = document.getElementById('copyBadge')
+  // console.log(x);
+  copyBadge.style.opacity = '0.9';
+  copyBadge.style.top = '5%'
   setTimeout(() => {
-    document.getElementById('copyBadge').style.opacity = '0';
+    copyBadge.style.opacity = '0';
+    setTimeout(() => {
+      copyBadge.style.top = '7%';
+    }, 100)
   }, 2000)
+
 }
 
 
