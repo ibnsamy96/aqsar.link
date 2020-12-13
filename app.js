@@ -54,7 +54,7 @@ function changeBadge() {
     copyBadge.style.opacity = '0';
     setTimeout(() => {
       copyBadge.style.top = '7%';
-    }, 100)
+    }, 80)
   }, 2000)
 
 }
