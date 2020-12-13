@@ -106,7 +106,7 @@ input {
     color: #BB0A1E; */
 }
 
-.btn-secondary:active svg g .copy-cls-1,
+/* .btn-secondary:active svg g .copy-cls-1,
 .btn-secondary:active svg g .copy-cls-2,
 .btn-secondary:active svg g .copy-cls-3,
 .btn-secondary:active svg .qr-cls-1,
@@ -114,14 +114,13 @@ input {
 .btn-secondary:active svg .qr-cls-3,
 .btn-secondary:active svg .qr-cls-4 {
     /* fill: #fff; */
-    background-color: rgba(220, 20, 60, 0.3) !important;
-    /* border: none !important;
+background-color: rgba(220, 20, 60, 0.3) !important;
+/* border: none !important;
     box-shadow: none !important;
     color: #BB0A1E; */
 }
 
-
-input#link,
+*/ input#link,
 .linkGroup p {
     direction: ltr;
     text-align: left;

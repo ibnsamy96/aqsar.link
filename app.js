@@ -224,6 +224,7 @@ window.copyShortLink = (slug) => {
   }
   document.body.removeChild(temporaryInput);
   showNotification('تم النسخ')
+  // window.navigator.vibrate(1000)
 }
 
 // create QR code for links
