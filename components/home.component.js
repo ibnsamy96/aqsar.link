@@ -30,13 +30,7 @@ export const HomeComponent = {
             <div class="col-md-8 col-lg-6">
             </div>
         </section>
-        <section id='qrCodeOverlay'>
-            <div id='qrBox'>
-                <i id='closeOverlay'></i>
-                <img src="" id="qrImg" />
-                <a id='downloadQRImg' style="display: none" class="btn btn-secondary" href="" download="qrCode.png">تحميل</a>
-            </div>
-        </section>
+
         <div id='copyBadge'>تم النسخ</div>
 
     </main>

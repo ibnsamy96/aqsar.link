@@ -28,7 +28,7 @@ function generateLinkGroups(shortenedLinks) {
     <button class='col-6 m-0 px-1 copyBTN btn btn-secondary'
         onclick="copyShortLink('${link.slug}')"><img src="./assets/svg/copy.svg" alt="copy"></button>
     <button class='col-6 m-0 px-1  qrBTN btn btn-secondary'
-        onclick="createQR('${link.slug}')"><img src="./assets/svg/qr.svg" alt="qr"></button>
+        onclick="toggleQrCodeOverlay('${link.slug}')"><img src="./assets/svg/qr.svg" alt="qr"></button>
         </div>
     <div class="col-lg-auto m-0 px-1 linksDiv">
         <p class="m-0 p-0  shortLink">https://${window.location.host}/${link.slug}</p>
@@ -56,7 +56,7 @@ function changeBadge() {
 
 
 function updateShortenedLinksElement(shortenedLinksHTMLCode) {
-  document.querySelector('#shortenedLinks .col-md-6').innerHTML = shortenedLinksHTMLCode;
+  document.querySelector('#shortenedLinks div').innerHTML = shortenedLinksHTMLCode;
 }
 
 function fetchLocalStorage() {
@@ -222,7 +222,7 @@ window.copyShortLink = (slug) => {
 
 // create QR code for links
 
-window.createQR = (slug) => {
+const createQR = (slug) => {
   const url = `https://${window.location.host}/${slug}`
   const qrImg = document.querySelector("#qrImg");
   const downloadQRBtn = document.querySelector("#downloadQRImg");
@@ -234,12 +234,52 @@ window.createQR = (slug) => {
     "href",
     `https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=100x100&color=DC143C&bgcolor=255-255-255`
   );
-  qrImg.className = '';
-  qrImg.style.display = "inline-block";
-  downloadQRBtn.style.display = "inline-block";
-  console.log(url);
+  // qrImg.className = '';
+  // qrImg.style.display = "inline-block";
+  // downloadQRBtn.style.display = "inline-block";
+  // console.log(url);
   // const request = await fetch(
 
   // );
   // console.log(response.json);
 };
+
+
+window.toggleQrCodeOverlay = (slug = undefined) => {
+
+  console.log('in toggle');
+
+  // const qrCodeOverlay = document.createElement('section')
+
+  let qrCodeOverlay = document.querySelector('#qrCodeOverlay')
+
+  if (!qrCodeOverlay && slug) {
+    // create
+    qrCodeOverlay = document.createElement('section')
+    qrCodeOverlay.setAttribute('id', 'qrCodeOverlay')
+    qrCodeOverlay.innerHTML = `
+   
+    <div id='qrBox'>
+    <div id='closeOverlay' class="pl-2 pt-2"> <img src="../../assets/svg/close.svg" onClick='toggleQrCodeOverlay()'   width="16px"
+            alt="close">
+    </div>
+    <div id="qrImg" class='d-block mt-2'><img
+            src="https://api.qrserver.com/v1/create-qr-code/?data=https://aqsar.link/XzVhI&size=100x100&color=DC143C&bgcolor=255-255-255" />
+    </div>
+    <div id='downloadQRImg' class='d-block mt-2'>
+        <a href="" class="btn btn-secondary py-2" download="qrCode.png"> <img
+                src="../../assets/svg/download.svg" width="16px" alt="download" /> تحميل</a>
+    </div>
+    </div>
+   
+   `
+    document.querySelector('main').appendChild(qrCodeOverlay)
+    createQR(slug)
+  } else {
+    // remove
+    console.log(qrCodeOverlay);
+
+    qrCodeOverlay.remove()
+  }
+
+}
