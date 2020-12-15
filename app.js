@@ -83,7 +83,7 @@ function validateURL(url) {
   const pattern = new RegExp(
     "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,7}(:[0-9]{1,5})?(\\/.*)?$",
     "i"
-  ); // fragment locator 
+  );
 
   return pattern.test(url);
 }
@@ -133,19 +133,13 @@ async function generateSlug(length) {
 
 let link;
 let shortLinkParagraph;
-// let longLinkParagraph;
 let urlValidity;
-// let copyBTN;
-// let qrBTN;
 let submitBTN;
 
 function defineVariable() {
   link = document.querySelector("#link");
   shortLinkParagraph = document.querySelector(".shortLink");
-  // longLinkParagraph = document.querySelector(".longLink");
   urlValidity = document.querySelector("#urlValidity");
-  // copyBTN = document.querySelector('button[onclick="copyShortLink()"]');
-  // qrBTN = document.querySelector('button[onclick="createQR()"]');
   submitBTN = document.querySelector('#submitBTN')
 }
 
@@ -187,12 +181,8 @@ window.createNewShortLink = () => {
         saveToLocalStorage(previouslyShortened)
         updateShortenedLinksElement(generateLinkGroups(previouslyShortened))
         console.log(previouslyShortened);
-        // shortLinkParagraph.innerText = `${window.location.host}/${randomSlug}`;
-        // longLinkParagraph.innerText = domain;
       })
       .then(() => {
-        // copyBTN.style.display = "inline";
-        // qrBTN.style.display = "inline";
         console.log(submitBTN);
         disableForm(false)
 
@@ -235,20 +225,9 @@ const fetchQR = async (slug) => {
   const response = await fetch(`https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=200x200&color=DC143C&bgcolor=255-255-255`);
   const imgBlob = await response.blob();
   return URL.createObjectURL(imgBlob);
-
-  // qrImg.className = '';
-  // qrImg.style.display = "inline-block";
-  // downloadQRBtn.style.display = "inline-block";
-  // console.log(url);
-  // const request = await fetch(
-
-  // );
-  // console.log(response.json);
 };
 
 function loadingQR() {
-  // submitBTN.disabled = booleanValue;
-  // link.disabled = booleanValue;
   return LoadingComponent.render('secondary-text-color');
 
 }
@@ -257,11 +236,7 @@ window.toggleQrCodeOverlay = (event, slug = undefined) => {
 
   // console.log(element.target.id);
 
-  // const qrCodeOverlay = document.createElement('section')
-
   let qrCodeOverlay = document.querySelector('#qrCodeOverlay')
-
-  console.log(qrCodeOverlay);
 
   if (!qrCodeOverlay && slug) {
     // create
@@ -271,7 +246,6 @@ window.toggleQrCodeOverlay = (event, slug = undefined) => {
     const qrBox = document.createElement('div')
     qrBox.setAttribute('id', 'qrBox')
     qrBox.innerHTML = loadingQR();
-    // qrBox.style.backgroundColor = '#BB0A1E'
     qrBox.classList.add('p-3')
     qrCodeOverlay.appendChild(qrBox)
 
@@ -311,19 +285,13 @@ window.toggleQrCodeOverlay = (event, slug = undefined) => {
 
       }).catch(error => {
         console.error(error)
-        // qrBox.innerHTML = loadingQR(false);
         qrCodeOverlay.remove()
         showNotification('حدثت مشكلة أثناء استخراج الكود!')
       })
   } else if (qrCodeOverlay && (event.target.id === 'closeImg' || event.target.id === 'qrCodeOverlay')) {
     // remove
-    console.log(qrCodeOverlay);
     console.log(event.target.id);
-
-
-    // setTimeout(() => {
     qrCodeOverlay.remove()
-    // }, 500)
   }
 
 }

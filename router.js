@@ -13,7 +13,6 @@ import {
 
 
 // Routes
-// TODO add other pages routes in here
 const routes = [{
     path: "/",
     component: HomeComponent
