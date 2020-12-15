@@ -24,19 +24,31 @@ body {
 }
 
 
-.primaryText {
-    font-family: 'Aref Ruqaa', serif;
-    font-size: 10rem;
-    /* font-size: 15vw; */
-    /* margin-top: -6rem !important; */
-}
+/* .primaryText {
+    font-size: 15vw;
+margin-top: -6rem !important;
+} */
 
 .primary-text-color {
     color: white;
 }
 
+.primary-text-font {
+    font-family: 'Aref Ruqaa', serif;
+}
+
+.primary-text-size {
+    font-size: 10rem;
+}
+
+
+
 .secondary-text-color {
     color: #BB0A1E;
+}
+
+#errorMessage {
+    font-size: 1.5rem !important;
 }
 
 .no-select {
@@ -355,7 +367,7 @@ input:-internal-autofill-selected {
 
 /* Large devices (desktops, 992px and up) */
 @media (max-width: 993px) {
-    .primaryText {
+    .primary-text-size {
         font-size: 8.7rem;
     }
 
@@ -397,14 +409,14 @@ input:-internal-autofill-selected {
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (max-width: 769px) {
-    .primaryText {
+    .primary-text-size {
         font-size: 7.5rem;
     }
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 577px) {
-    .primaryText {
+    .primary-text-size {
         font-size: 6rem;
     }
 
@@ -415,7 +427,7 @@ input:-internal-autofill-selected {
 
 /* Extra Small devices (landscape phones, 576px and up) */
 @media (max-width: 400px) {
-    .primaryText {
+    .primary-text-size {
         font-size: 4rem;
     }
 
