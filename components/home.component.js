@@ -45,27 +45,3 @@ export const HomeComponent = {
         }]
     }
 };
-
-
-
-
-// return `
-// <section>
-// <form action="javascript:;" onsubmit="createNewShortLink()">
-//   <label for="link">Url to shorten:</label>
-//   <input type="text" name="link" id="link" required />
-//   <small id="urlValidity"></small>
-//   <!-- <label for="slug">Optional. Custom micro url:</label>
-//   <input type="text" name="slug" id="slug" /> -->
-//   <input type="submit" value="Create" />
-// </form>
-// </section>
-
-// <!-- <input type="text" name="link" id="link" />
-// <button onclick="createNewShortLink()">Create</button> -->
-// <p id="result"></p>
-// <button class='displayNone' onclick="copyShortLink()">Copy</button>
-// <button class='displayNone' onclick="createQR()">Create QR</button>
-// <img src="" id="qrImg" class='displayNone' />
-
-//   `;
