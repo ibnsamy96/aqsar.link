@@ -28,7 +28,7 @@ function generateLinkGroups(shortenedLinks) {
     <button class='col-6 m-0 px-1 copyBTN btn btn-secondary'
         onclick="copyShortLink('${link.slug}')"><img src="./assets/svg/copy.svg" alt="copy"></button>
     <button class='col-6 m-0 px-1  qrBTN btn btn-secondary'
-        onclick="toggleQrCodeOverlay(this,'${link.slug}')"><img src="./assets/svg/qr.svg" alt="qr"></button>
+        onclick="toggleQrCodeOverlay(event,'${link.slug}')"><img src="./assets/svg/qr.svg" alt="qr"></button>
         </div>
     <div class="col-lg-auto m-0 px-1 linksDiv">
         <p class="m-0 p-0  shortLink">https://${window.location.host}/${link.slug}</p>
@@ -133,19 +133,19 @@ async function generateSlug(length) {
 
 let link;
 let shortLinkParagraph;
-let longLinkParagraph;
+// let longLinkParagraph;
 let urlValidity;
-let copyBTN;
-let qrBTN;
+// let copyBTN;
+// let qrBTN;
 let submitBTN;
 
 function defineVariable() {
   link = document.querySelector("#link");
   shortLinkParagraph = document.querySelector(".shortLink");
-  longLinkParagraph = document.querySelector(".longLink");
+  // longLinkParagraph = document.querySelector(".longLink");
   urlValidity = document.querySelector("#urlValidity");
-  copyBTN = document.querySelector('button[onclick="copyShortLink()"]');
-  qrBTN = document.querySelector('button[onclick="createQR()"]');
+  // copyBTN = document.querySelector('button[onclick="copyShortLink()"]');
+  // qrBTN = document.querySelector('button[onclick="createQR()"]');
   submitBTN = document.querySelector('#submitBTN')
 }
 
@@ -253,13 +253,15 @@ function loadingQR() {
 
 }
 
-window.toggleQrCodeOverlay = (element, slug = undefined) => {
+window.toggleQrCodeOverlay = (event, slug = undefined) => {
 
   // console.log(element.target.id);
 
   // const qrCodeOverlay = document.createElement('section')
 
   let qrCodeOverlay = document.querySelector('#qrCodeOverlay')
+
+  console.log(qrCodeOverlay);
 
   if (!qrCodeOverlay && slug) {
     // create
@@ -274,13 +276,14 @@ window.toggleQrCodeOverlay = (element, slug = undefined) => {
     qrCodeOverlay.appendChild(qrBox)
 
     document.querySelector('main').appendChild(qrCodeOverlay)
+
     fetchQR(slug)
       .then(url => {
         qrBox.style.minWidth = '300px';
         qrBox.classList.remove('p-3')
         qrBox.innerHTML = `
    
-      <div   id='closeOverlay' class="pl-2 pt-2"> <img id='closeImg' src="../../assets/svg/close.svg" onClick='toggleQrCodeOverlay(event)'   width="16px"
+      <div  id='closeOverlay' class="pl-2 pt-2"> <img id='closeImg' src="../../assets/svg/close.svg"  onClick='toggleQrCodeOverlay(event)'  width="16px"
               alt="close">
       </div>
       <div id="qrImg" class='d-block mt-2'><img
@@ -312,11 +315,15 @@ window.toggleQrCodeOverlay = (element, slug = undefined) => {
         qrCodeOverlay.remove()
         showNotification('حدثت مشكلة أثناء استخراج الكود!')
       })
-  } else if (element.target.id === 'closeImg' || element.target.id === 'qrCodeOverlay') {
+  } else if (qrCodeOverlay && (event.target.id === 'closeImg' || event.target.id === 'qrCodeOverlay')) {
     // remove
     console.log(qrCodeOverlay);
+    console.log(event.target.id);
 
+
+    // setTimeout(() => {
     qrCodeOverlay.remove()
+    // }, 500)
   }
 
 }

@@ -41,6 +41,9 @@ function renderComponent(component) {
       } else if (codeInfo.operation === 'append') {
         element.insertAdjacentHTML(codeInfo.position, codeInfo.code)
 
+      } else if (codeInfo.operation === 'remove') {
+        element.remove()
+
       }
     });
 

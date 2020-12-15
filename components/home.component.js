@@ -39,22 +39,10 @@ export const HomeComponent = {
     },
     injectCode: () => {
         return [{
-                'operation': 'editInnerText',
-                'querySelector': 'title',
-                'newText': 'أقصر لينك | الرئيسية'
-            },
-            {
-                'operation': 'editAttribute',
-                'querySelector': 'body',
-                'attribute': 'id',
-                'newValue': 'body'
-            }, {
-                'operation': 'append',
-                'querySelector': 'body',
-                'position': 'beforeend',
-                'code': `<script type="module" src="./app.js"></script>`
-            }
-        ]
+            'operation': 'editInnerText',
+            'querySelector': 'title',
+            'newText': 'أقصر لينك | الرئيسية'
+        }]
     }
 };
 
