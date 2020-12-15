@@ -264,7 +264,7 @@ window.toggleQrCodeOverlay = (event, slug = undefined) => {
               src="" />
       </div>
       <div id='downloadQRImg' class='d-block mt-2'>
-          <a href="" class="btn btn-secondary py-2" download="qrCode.png"> <img
+          <a href="" class="btn btn-secondary py-2" download="qr-code-${slug}.png"> <img
                   src="../../assets/svg/download.svg" width="16px" alt="download" /> تحميل</a>
       </div>
      
