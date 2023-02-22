@@ -2,7 +2,7 @@
 
  Simple link shortener that takes URL from the user and gives him a short link to share.  
  It's a front-end app and the user's URL and its shortcut are saved in the firebase realtime database. the app has a simple router to act like a **SPA**.  
-You can reach its live version by following the link [aqsar.link](https://aqsar.link).
+You can reach its live version by following the link [aqsar.link](https://aqsar.ibnsamy.com).
 
 ![project homepage](./readme-cover.png)
 
